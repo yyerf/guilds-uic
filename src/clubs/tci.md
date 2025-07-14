@@ -7,7 +7,6 @@ description:
 
 tags:
   - Student Publication
-
 assets:
   logo: logo.png
   cover_photo: cover.png

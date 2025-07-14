@@ -274,9 +274,9 @@ export default function Home() {
 												textOverflow="ellipsis"
 												whiteSpace="nowrap"
 												overflow="hidden"
-												_display="flex"
+												display="flex"
 												alignItems="center"
-												_justifyContent="flex-start"
+												justifyContent="flex-start"
 												_hover={isDisabled ? {} : {
 													bg: isSelected ? "blue.700" : "gray.50",
 													borderColor: isSelected ? "blue.700" : "blue.300",
