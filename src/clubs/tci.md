@@ -7,6 +7,7 @@ description:
 
 tags:
   - Student Publication
+  - Non-Academic Club
 assets:
   logo: logo.png
   cover_photo: cover.png
