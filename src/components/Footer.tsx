@@ -15,9 +15,15 @@ export default function Footer() {
 						justifyContent="center"
 						flexWrap="wrap"
 						>
+
+						<Text fontSize="lg" fontWeight="semibold" color="white" mb={2}>
+							Club Fair: Guilds 2025
+						</Text>
+						{/* Divider */}
+					<Divider borderColor="whiteAlpha.200" />
 						<Usg />
 						<Divider orientation="vertical" h="8" borderColor="whiteAlpha.300" />
-						<Gdsc />
+						<Gdsc/>
 					</HStack>
 
 					{/* Divider */}
@@ -25,9 +31,6 @@ export default function Footer() {
 
 					{/* Footer Info */}
 					<VStack spacing="2" textAlign="center">
-						<Text fontSize="lg" fontWeight="semibold" color="white">
-							Club Fair: Guilds
-						</Text>
 						<Text fontSize="xs" color="whiteAlpha.600" letterSpacing="wide">
 							© {new Date().getFullYear()} GDGOC-UIC • Developed by Google Developer Group On Campus - UIC
 						</Text>
