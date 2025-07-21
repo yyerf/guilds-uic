@@ -169,8 +169,8 @@ export default function ClubCard({ club }: { club: Club }) {
 							borderRadius="lg"
 							py="3"
 							_hover={{
-								bg: "blue.600",
 								transform: "translateY(-1px)",
+								boxShadow: "0 4px 12px rgba(59, 130, 246, 0.4)"
 							}}
 							_active={{
 								transform: "translateY(0)",

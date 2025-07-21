@@ -1,6 +1,6 @@
 import { Box, Flex } from "@chakra-ui/react";
 import Link from "next/link";
-import Guilds from "./logos/Guilds";
+import NewGuildLogo from "./logos/newGuildLogo";
 import Gdgoc from "./logos/Gdgoc"
 
 export default function NavigationBar() {
@@ -13,7 +13,7 @@ export default function NavigationBar() {
 			pb={["1.4rem", "1.4rem", "3rem"]}
 		>
 			<Link href="/">
-				<Guilds />
+				<NewGuildLogo />
 			</Link>
 		</Flex>
 	);

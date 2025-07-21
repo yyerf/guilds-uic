@@ -145,184 +145,177 @@ export default function Home() {
 				alignItems="center"
 				justifyContent="center"
 				overflow="hidden"
+				py={["16", "20"]}
+				px={["4", "6", "8"]}
 			>
-				{/* Background Image */}
-				<Image
-					src="/girl.png"
-					position="absolute"
-					left="0"
-					bottom="0"
-					zIndex="0"
-					alt="girl"
-					h={["300px", "400px", "500px", "600px"]}
-					opacity="0.8"
-				/>
-
 				{/* Content Container */}
 				<Container maxW="7xl" position="relative" zIndex="1">
-					<VStack spacing="12" textAlign="center">
-						{/* Main Heading */}
+					<VStack spacing={["8", "10", "12"]} textAlign="center">
+						{/* Logo */}
 						<Box>
+							<Image
+								src="/image.png"
+								alt="Guilds Logo"
+								maxH={["100px", "130px", "160px", "200px"]}
+								maxW={["250px", "350px", "450px", "600px"]}
+								objectFit="contain"
+								mx="auto"
+								filter="drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))"
+							/>
+						</Box>
+
+						{/* Main Heading and Subtext */}
+						<Box px={["2", "4", "6"]}>
 							<Heading 
-								fontSize={["2xl", "3xl", "4xl", "5xl"]} 
+								fontSize={["xl", "2xl", "3xl", "4xl", "5xl"]} 
 								fontWeight="bold"
-								color="gray.800"
-								lineHeight="1.2"
-								mb="4"
+								color="white"
+								lineHeight="1.1"
+								mb={["4", "5", "6"]}
+								letterSpacing="-0.02em"
+								textShadow="2px 2px 4px rgba(0,0,0,0.3)"
 							>
-								Find and join existing clubs
+								Welcome to Guilds
 							</Heading>
 							<Text 
-								fontSize={["lg", "xl"]} 
-								color="gray.600"
-								maxW="2xl"
+								fontSize={["md", "lg", "xl", "2xl"]} 
+								color="white"
+								maxW="3xl"
 								mx="auto"
+								fontWeight="500"
+								lineHeight="1.6"
+								textShadow="1px 1px 2px rgba(0,0,0,0.2)"
+								px={["2", "0"]}
 							>
-								Discover the perfect club that matches your interests and passions
+								Discover the perfect club that matches your interests and passions!
 							</Text>
 						</Box>
 
+						{/* Slideshow Section */}
+						<Box w="full" maxW="6xl">
+							<ClubSlideshow />
+						</Box>
+
 						{/* Search Section */}
-						<VStack spacing="8" w="full" maxW="4xl">
+						<VStack spacing={["6", "8", "10"]} w="full" maxW="6xl" px={["2", "4"]}>
 							<SearchBar
 								query={router.query['q']?.toString() ?? ''}
 								onSubmit={handleSearchBar} 
 							/>
 
-							{/* Selected Tags Display */}
-							{selectedTags.length > 0 && (
-								<VStack spacing="4" w="full">
-									<HStack spacing="3" wrap="wrap" justifyContent="center">
-										<Text fontSize="lg" fontWeight="semibold" color="gray.700">
-											Selected Categories:
-										</Text>
-										{selectedTags.map(tag => (
-											<Badge
-												key={tag}
-												colorScheme="blue"
-												variant="solid"
-												px="4"
-												py="2"
-												borderRadius="full"
-												border="2px solid"
-												borderColor="blue.600"
-												display="flex"
-												alignItems="center"
-												gap="2"
-												boxShadow="md"
-											>
-												{tag}
-												<IconButton
-													aria-label="Remove tag"
-													icon={<IoClose />}
-													size="xs"
-													variant="ghost"
-													color="white"
-													onClick={() => removeTag(tag)}
-													_hover={{ bg: 'rgba(255,255,255,0.2)' }}
-												/>
-											</Badge>
-										))}
-									</HStack>
-									<Text fontSize="sm" color="gray.500">
-										{selectedTags.length}/3 categories selected
-									</Text>
-								</VStack>
-							)}
-
-							{/* Category Selection Instructions */}
-							{selectedTags.length === 0 && (
-								<Text fontSize="md" color="gray.500" textAlign="center">
-									Select up to 3 categories to filter clubs
-								</Text>
-							)}
-
 							{/* Category Buttons */}
-							<SimpleGrid 
-								columns={[2, 3, 4, 5]} 
-								spacing="4" 
-								w="full"
-								maxW="6xl"
-							>
-								{(clubTags ?? []).map(tag => {
-									const isSelected = selectedTags.includes(tag);
-									const isDisabled = selectedTags.length >= 3 && !isSelected;
-									return (
-										<Tooltip key={`tag_tooltip_${tag}`} label={tag} hasArrow placement="top">
+							<Box w="full" maxW="5xl">
+								<SimpleGrid 
+									columns={[1, 2, 2, 3]} 
+									spacing={["3", "4", "4", "4"]} 
+									w="full"
+									justifyItems="center"
+								>
+									{["Academic Club", "Non-Academic Club", "Music and Arts", "Public Speaking", "Religion", "Learning"].map(tag => {
+										const isSelected = selectedTags.includes(tag);
+										const isDisabled = selectedTags.length >= 3 && !isSelected;
+										return (
 											<Button
 												key={`tag_${tag}`}
 												onClick={() => handleTagClick(tag)}
 												disabled={isDisabled}
-												variant="ghost"
-												bg={isSelected ? "blue.600" : "white"}
-												color={isSelected ? "white" : "gray.800"}
+												variant="outline"
+												bg={isSelected ? "white" : "rgba(255,255,255,0.2)"}
+												color="black"
 												borderRadius="full"
-												borderWidth={isSelected ? "2px" : "1px"}
-												borderColor={isSelected ? "blue.600" : "gray.200"}
-												boxShadow={isSelected ? "md" : "sm"}
-												fontWeight="semibold"
-												fontSize="md"
-												px={6}
-												py={2.5}
-												minH="44px"
-												maxW="180px"
+												borderWidth="2px"
+												borderColor={isSelected ? "black" : "rgba(0,0,0,0.6)"}
+												backdropFilter="blur(10px)"
+												boxShadow={isSelected ? "0 8px 25px rgba(0,0,0,0.3)" : "0 4px 15px rgba(0,0,0,0.2)"}
+												fontWeight="600"
+												fontSize={["sm", "sm", "md", "md"]}
+												px={["4", "5", "6", "6"]}
+												py={["2.5", "3", "3", "3"]}
+												minH={["40px", "44px", "48px", "48px"]}
 												w="full"
-												transition="all 0.18s cubic-bezier(.4,1,.7,1)"
+												maxW={["280px", "220px", "200px", "200px"]}
+												transition="all 0.2s ease-in-out"
 												position="relative"
 												opacity={isDisabled ? 0.5 : 1}
 												cursor={isDisabled ? "not-allowed" : "pointer"}
-												textOverflow="ellipsis"
+												textAlign="center"
 												whiteSpace="nowrap"
 												overflow="hidden"
+												textOverflow="ellipsis"
 												display="flex"
 												alignItems="center"
-												justifyContent="flex-start"
-												_hover={isDisabled ? {} : {
-													bg: isSelected ? "blue.700" : "gray.50",
-													borderColor: isSelected ? "blue.700" : "blue.300",
-													boxShadow: "lg",
-													transform: "translateY(-2px) scale(1.04)",
+												justifyContent="center"
+												// Remove hover effects on mobile to prevent color flickering
+												_hover={{
+													"@media (hover: hover)": isDisabled ? {} : {
+														borderColor: "black",
+														boxShadow: isSelected ? "0 10px 30px rgba(0,0,0,0.35)" : "0 6px 20px rgba(0,0,0,0.25)",
+														transform: "translateY(-1px)",
+													}
 												}}
-												_active={isDisabled ? {} : {
+												_active={{
 													transform: "scale(0.98)",
+													transition: "all 0.1s ease-in-out",
 												}}
-												title={isDisabled ? "Maximum 3 categories allowed" : isSelected ? "Click to remove" : "Click to add"}
+												_focus={{
+													outline: "none",
+													boxShadow: isSelected 
+														? "0 0 0 3px rgba(0,0,0,0.3), 0 8px 25px rgba(0,0,0,0.3)"
+														: "0 0 0 3px rgba(0,0,0,0.3), 0 4px 15px rgba(0,0,0,0.2)",
+												}}
+												// Ensure consistent touch behavior on mobile
+												sx={{
+													WebkitTapHighlightColor: "transparent",
+													touchAction: "manipulation",
+												}}
 											>
 												{isSelected && (
-													<FiCheck style={{ marginRight: 8, flexShrink: 0 }} size={18} />
+													<Box as={FiCheck} mr={[1, 2]} flexShrink={0} color="black" w={["14px", "16px"]} h={["14px", "16px"]} />
 												)}
-												<span style={{
-													display: "inline-block",
-													verticalAlign: "middle",
-													textOverflow: "ellipsis",
-													whiteSpace: "nowrap",
-													overflow: "hidden",
-													maxWidth: isSelected ? 120 : 140
-												}}>{tag}</span>
+												<Text 
+													fontSize="inherit" 
+													fontWeight="inherit" 
+													color="black"
+													lineHeight="1.2"
+													noOfLines={1}
+												>
+													{tag}
+												</Text>
 											</Button>
-										</Tooltip>
-									);
-								})}
-							</SimpleGrid>
+										);
+									})}
+								</SimpleGrid>
+							</Box>
 						</VStack>
 					</VStack>
 				</Container>
 			</Box>
 
 			{/* Results Section */}
-			<Box bg="gray.50" py="16">
+			<Box 
+				py="8"
+			>
 				<Container maxW="7xl">
-					<ClubResults clubs={filteredClubs} error={error} />
+					<ClubResults clubs={filteredClubs} error={error} selectedTags={selectedTags} />
 				</Container>
 			</Box>
 		</Layout>
 	);
 }
 
-function ClubResults({ clubs, error }: { clubs: Club[] | null, error?: any }) {
+function ClubResults({ clubs, error, selectedTags }: { clubs: Club[] | null, error?: any, selectedTags: string[] }) {
 	if (error) {
 		return (
-			<Box textAlign="center" py="20">
+			<Box
+				bg="rgba(255, 255, 255, 0.1)"
+				backdropFilter="blur(10px)"
+				borderRadius="xl"
+				p={["6", "8"]}
+				boxShadow="0 8px 32px rgba(0, 0, 0, 0.05)"
+				border="1px solid rgba(255, 255, 255, 0.1)"
+				textAlign="center"
+				py="20"
+			>
 				<Text fontSize="xl" color="red.500" mb="4">
 					Error loading clubs
 				</Text>
@@ -335,7 +328,16 @@ function ClubResults({ clubs, error }: { clubs: Club[] | null, error?: any }) {
 
 	if (!clubs) {
 		return (
-			<Box textAlign="center" py="20">
+			<Box
+				bg="rgba(255, 255, 255, 0.1)"
+				backdropFilter="blur(10px)"
+				borderRadius="xl"
+				p={["6", "8"]}
+				boxShadow="0 8px 32px rgba(0, 0, 0, 0.05)"
+				border="1px solid rgba(255, 255, 255, 0.1)"
+				textAlign="center"
+				py="20"
+			>
 				<Text fontSize="xl" color="gray.600" mb="4">
 					Loading clubs...
 				</Text>
@@ -345,7 +347,16 @@ function ClubResults({ clubs, error }: { clubs: Club[] | null, error?: any }) {
 
 	if (clubs.length === 0) {
 		return (
-			<Box textAlign="center" py="20">
+			<Box
+				bg="rgba(255, 255, 255, 0.1)"
+				backdropFilter="blur(10px)"
+				borderRadius="xl"
+				p={["6", "8"]}
+				boxShadow="0 8px 32px rgba(0, 0, 0, 0.05)"
+				border="1px solid rgba(255, 255, 255, 0.1)"
+				textAlign="center"
+				py="20"
+			>
 				<Text fontSize="xl" color="gray.600" mb="4">
 					No clubs found
 				</Text>
@@ -357,14 +368,51 @@ function ClubResults({ clubs, error }: { clubs: Club[] | null, error?: any }) {
 	}
 
 	return (
-		<VStack spacing="8" align="stretch">
-			<Box>
-				<Heading fontSize="2xl" color="gray.800" mb="2">
-					Found {clubs.length} club{clubs.length !== 1 ? 's' : ''}
-				</Heading>
-				<Text color="gray.600">
-					Explore the clubs below and find your perfect match
-				</Text>
+		<Box
+			bg="rgba(255, 255, 255, 0.1)"
+			backdropFilter="blur(10px)"
+			borderRadius="xl"
+			p={["6", "8"]}
+			boxShadow="0 8px 32px rgba(0, 0, 0, 0.05)"
+			border="1px solid rgba(255, 255, 255, 0.1)"
+		>
+			<VStack spacing="8" align="stretch">
+				<Box>
+				<HStack spacing="4" wrap="wrap" justify="space-between" align="flex-start">
+					<VStack align="flex-start" spacing="2">
+						<Heading fontSize="2xl" color="gray.800">
+							Found {clubs.length} Club{clubs.length !== 1 ? 's' : ''}:
+						</Heading>
+						<Text color="gray.600">
+							{clubs.length} out of {clubs.length} Results
+						</Text>
+					</VStack>
+					
+					{selectedTags.length > 0 && (
+						<VStack align="flex-end" spacing="3">
+							<HStack spacing="2" wrap="wrap" justify="flex-end">
+								{selectedTags.map(tag => (
+									<Badge
+										key={tag}
+										bg="rgba(255,255,255,0.9)"
+										color="gray.700"
+										borderWidth="1px"
+										borderColor="gray.300"
+										px="3"
+										py="1"
+										borderRadius="full"
+										fontSize="xs"
+										fontWeight="600"
+										backdropFilter="blur(5px)"
+										boxShadow="0 2px 8px rgba(0,0,0,0.1)"
+									>
+										{tag}
+									</Badge>
+								))}
+							</HStack>
+						</VStack>
+					)}
+				</HStack>
 			</Box>
 			
 			<SimpleGrid 
@@ -378,71 +426,89 @@ function ClubResults({ clubs, error }: { clubs: Club[] | null, error?: any }) {
 					</Box>
 				))}
 			</SimpleGrid>
-		</VStack>
+			</VStack>
+		</Box>
 	);
 }
 
 function SearchBar({ query, onSubmit }: { query: string, onSubmit: FormEventHandler<HTMLFormElement> }) {
 	return (
-		<form onSubmit={onSubmit} style={{ width: '100%' }}>
-			<InputGroup
-				size="lg"
-				borderRadius="xl"
-				boxShadow="lg"
-				overflow="hidden"
-				border="2px solid"
-				borderColor="gray.200"
-				_hover={{
-					borderColor: "blue.300",
-					boxShadow: "xl",
-				}}
-				_focusWithin={{
-					borderColor: "blue.500",
-					boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.1)",
-				}}
-				transition="all 0.2s"
-			>
-				<Input
-					placeholder="Search for a club..."
-					bg="white"
-					border="none"
-					px="6"
-					py="4"
-					fontSize="lg"
-					_focus={{
-						boxShadow: "none",
-						border: "none",
+		<Box w="full" maxW="4xl" mx="auto" px={["2", "4"]}>
+			<form onSubmit={onSubmit} style={{ width: '100%' }}>
+				<InputGroup
+					size={["md", "lg"]}
+					borderRadius="full"
+					boxShadow="0 8px 25px rgba(0,0,0,0.15)"
+					overflow="hidden"
+					border="2px solid"
+					borderColor="rgba(255,255,255,0.3)"
+					bg="rgba(255,255,255,0.95)"
+					backdropFilter="blur(10px)"
+					_hover={{
+						borderColor: "rgba(255,255,255,0.6)",
+						boxShadow: "0 12px 35px rgba(0,0,0,0.2)",
+						transform: "translateY(-1px)",
 					}}
-					name="search_query"
-					defaultValue={query}
-				/>
-				<InputRightElement
-					w="auto"
-					h="full"
-					pr="2"
+					_focusWithin={{
+						borderColor: "white",
+						boxShadow: "0 0 0 4px rgba(255,255,255,0.3), 0 15px 40px rgba(0,0,0,0.25)",
+						transform: "translateY(-2px)",
+					}}
+					transition="all 0.3s ease-in-out"
 				>
-					<Button
-						h="calc(100% - 4px)"
-						px="8"
-						bg="blue.500"
-						color="white"
-						borderRadius="lg"
-						mr="2"
-						_hover={{
-							bg: "blue.600",
-							transform: "translateY(-1px)",
+					<Input
+						placeholder="Search Club..."
+						bg="transparent"
+						border="none"
+						px={["4", "6", "8"]}
+						py={["4", "5", "6"]}
+						fontSize={["sm", "md", "lg"]}
+						fontWeight="500"
+						color="gray.700"
+						_placeholder={{
+							color: "gray.500",
+							fontSize: ["sm", "md", "lg"],
 						}}
-						_active={{
-							transform: "translateY(0)",
+						_focus={{
+							boxShadow: "none",
+							border: "none",
+							outline: "none",
 						}}
-						transition="all 0.2s"
-						type="submit"
+						name="search_query"
+						defaultValue={query}
+					/>
+					<InputRightElement
+						w="auto"
+						h="full"
+						pr={["2", "3"]}
 					>
-						Search
-					</Button>
-				</InputRightElement>
-			</InputGroup>
-		</form>
+						<Button
+							h={["calc(100% - 4px)", "calc(100% - 6px)"]}
+							px={["4", "6", "8"]}
+							bg="blue.600"
+							color="white"
+							borderRadius="full"
+							mr={["2", "3"]}
+							fontWeight="600"
+							fontSize={["xs", "sm", "md"]}
+							boxShadow="0 4px 15px rgba(59, 130, 246, 0.4)"
+							_hover={{
+								transform: "translateY(-1px)",
+								boxShadow: "0 6px 20px rgba(59, 130, 246, 0.5)",
+							}}
+							_active={{
+								transform: "translateY(0)",
+								boxShadow: "0 4px 15px rgba(59, 130, 246, 0.4)",
+							}}
+							transition="all 0.2s ease-in-out"
+							type="submit"
+						>
+							Search
+						</Button>
+					</InputRightElement>
+				</InputGroup>
+			</form>
+		</Box>
 	);
 }
 
@@ -461,6 +527,375 @@ const StyledSlideShow = styled(Swiper)`
 	}
 `;
 
+// Club Slideshow Component
+function ClubSlideshow() {
+	const slideshowItems = [
+		{
+			id: 1,
+			title: "Academic Excellence Awards",
+			image: "/slideshow/clubfair_2024.jpg",
+			description: "Celebrating outstanding achievements in academic clubs",
+			borderColor: "#EF4444" // Red
+		},
+		{
+			id: 2,
+			title: "Club Fair 2025 Highlights",
+			image: "/slideshow/clubfair2.jpg",
+			description: "Amazing moments from our annual club fair",
+			borderColor: "#3B82F6" // Blue
+		},
+		{
+			id: 3,
+			title: "Community Service Projects",
+			image: "/slideshow/clubfair3.jpg",
+			description: "Making a difference in our community",
+			borderColor: "#10B981" // Green
+		},
+		{
+			id: 4,
+			title: "Creative Arts Showcase",
+			image: "/slideshow/clubfair4.jpg",
+			description: "Showcasing talents from our arts and creative clubs",
+			borderColor: "#F59E0B" // Yellow
+		},
+		{
+			id: 5,
+			title: "Leadership Development",
+			image: "/slideshow/clubfair5.jpg",
+			description: "Building tomorrow's leaders today",
+			borderColor: "#8B5CF6" // Purple
+		},
+		{
+			id: 6,
+			title: "Leadership Development",
+			image: "/slideshow/clubfair6.jpg",
+			description: "Building tomorrow's leaders today",
+			borderColor: "#26076eff" 
+		}
+	];
+
+	const [currentSlide, setCurrentSlide] = useState(0);
+	const [floatingPositions, setFloatingPositions] = useState([]);
+
+	// Initialize random floating positions
+	useEffect(() => {
+		const generatePositions = () => {
+			return slideshowItems.map((_, index) => ({
+				x: Math.random() * 60 + 10, // 10% to 70% from left
+				y: Math.random() * 50 + 10, // 10% to 60% from top
+				rotation: Math.random() * 20 - 10, // -10 to +10 degrees
+				scale: 0.6 + Math.random() * 0.3, // 0.6 to 0.9 scale
+				animationDelay: Math.random() * 2, // 0 to 2 seconds delay
+			}));
+		};
+		setFloatingPositions(generatePositions());
+	}, [slideshowItems.length]);
+
+	useEffect(() => {
+		const timer = setInterval(() => {
+			setCurrentSlide((prev) => (prev + 1) % slideshowItems.length);
+			// Regenerate positions occasionally for more dynamism
+			if (Math.random() < 0.3) {
+				const newPositions = slideshowItems.map((_, index) => ({
+					x: Math.random() * 60 + 10,
+					y: Math.random() * 50 + 10,
+					rotation: Math.random() * 20 - 10,
+					scale: 0.6 + Math.random() * 0.3,
+					animationDelay: Math.random() * 2,
+				}));
+				setFloatingPositions(newPositions);
+			}
+		}, 5000); // Auto-advance every 5 seconds
+
+		return () => clearInterval(timer);
+	}, [slideshowItems.length]);
+
+	return (
+		<Box 
+			position="relative" 
+			w="full" 
+			h={["400px", "500px", "600px"]} 
+			overflow="hidden" 
+			bg="rgba(255, 255, 255, 0.1)"
+			backdropFilter="blur(10px)"
+			borderRadius={["xl", "2xl", "3xl"]} 
+			p={["4", "6", "8"]}
+			boxShadow="0 8px 32px rgba(0, 0, 0, 0.05)"
+			border="1px solid rgba(255, 255, 255, 0.1)"
+		>
+			{/* Club Fair Banner - floating with gravity */}
+			<Box
+				position="absolute"
+				top={["2", "4", "8"]}
+				left={["2", "4", "8"]}
+				bg="blue.500"
+				color="white"
+				px={["3", "4", "6"]}
+				py={["1.5", "2", "3"]}
+				borderRadius="full"
+				fontSize={["sm", "md", "lg"]}
+				fontWeight="600"
+				display="inline-flex"
+				alignItems="center"
+				gap="2"
+				boxShadow="0 4px 20px rgba(59, 130, 246, 0.4)"
+				zIndex="20"
+				maxW={["180px", "240px", "auto"]}
+				transform="rotate(-2deg)"
+				animation="float 6s ease-in-out infinite"
+				sx={{
+					"@keyframes float": {
+						"0%, 100%": { transform: "rotate(-2deg) translateY(0px)" },
+						"50%": { transform: "rotate(-1deg) translateY(-10px)" }
+					}
+				}}
+			>
+				🎉 Club Fair 2025 is Here!
+			</Box>
+
+			{/* Floating background circles with gravity effect */}
+			{floatingPositions.length > 0 && slideshowItems.map((item, index) => {
+				if (index === currentSlide) return null; // Don't render main slide here
+				
+				const position = floatingPositions[index];
+				const isVisible = Math.abs(index - currentSlide) <= 2 || 
+								Math.abs(index - currentSlide) >= slideshowItems.length - 2;
+				
+				return (
+					<Box
+						key={`floating-${index}`}
+						position="absolute"
+						left={`${position?.x || 20}%`}
+						top={`${position?.y || 30}%`}
+						w={["80px", "100px", "120px"]}
+						h={["80px", "100px", "120px"]}
+						borderRadius="50%"
+						overflow="hidden"
+						border={`4px solid ${item.borderColor}`}
+						opacity={isVisible ? 0.7 : 0.3}
+						transform={`rotate(${position?.rotation || 0}deg) scale(${position?.scale || 0.7})`}
+						transition="all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)"
+						cursor="pointer"
+						onClick={() => setCurrentSlide(index)}
+						zIndex="2"
+						_hover={{ 
+							transform: `rotate(${position?.rotation || 0}deg) scale(${(position?.scale || 0.7) * 1.1})`,
+							opacity: 0.9
+						}}
+						animation={`gravityFloat ${3 + (index * 0.5)}s ease-in-out infinite ${position?.animationDelay || 0}s`}
+						sx={{
+							"@keyframes gravityFloat": {
+								"0%, 100%": { 
+									transform: `rotate(${position?.rotation || 0}deg) scale(${position?.scale || 0.7}) translateY(0px)` 
+								},
+								"33%": { 
+									transform: `rotate(${(position?.rotation || 0) + 5}deg) scale(${position?.scale || 0.7}) translateY(-15px)` 
+								},
+								"66%": { 
+									transform: `rotate(${(position?.rotation || 0) - 3}deg) scale(${position?.scale || 0.7}) translateY(5px)` 
+								}
+							}
+						}}
+					>
+						<Image
+							src={item.image}
+							alt={item.title}
+							objectFit="cover"
+							w="full"
+							h="full"
+						/>
+					</Box>
+				);
+			})}
+
+			{/* Main center circle - enhanced with smooth transitions */}
+			<Box
+				position="absolute"
+				left="50%"
+				top="50%"
+				transform="translate(-50%, -50%)"
+				w={["200px", "250px", "300px", "350px", "400px"]}
+				h={["200px", "250px", "300px", "350px", "400px"]}
+				borderRadius="50%"
+				overflow="hidden"
+				border={`${["8px", "10px", "12px"][Math.min(2, 1)]} solid ${slideshowItems[currentSlide].borderColor}`}
+				boxShadow={[
+					"0 8px 20px rgba(0,0,0,0.2), 0 0 40px rgba(0,0,0,0.1)", 
+					"0 12px 30px rgba(0,0,0,0.2), 0 0 50px rgba(0,0,0,0.1)", 
+					"0 15px 40px rgba(0,0,0,0.2), 0 0 60px rgba(0,0,0,0.1)"
+				]}
+				transition="all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)"
+				zIndex="15"
+				animation="mainPulse 8s ease-in-out infinite"
+				sx={{
+					"@keyframes mainPulse": {
+						"0%, 100%": { 
+							transform: "translate(-50%, -50%) scale(1) rotate(0deg)",
+							filter: "brightness(1)"
+						},
+						"25%": { 
+							transform: "translate(-50%, -50%) scale(1.02) rotate(1deg)",
+							filter: "brightness(1.05)"
+						},
+						"75%": { 
+							transform: "translate(-50%, -50%) scale(0.98) rotate(-1deg)",
+							filter: "brightness(0.95)"
+						}
+					}
+				}}
+			>
+				<Box position="relative" w="full" h="full">
+					<Image
+						src={slideshowItems[currentSlide].image}
+						alt={slideshowItems[currentSlide].title}
+						objectFit="cover"
+						w="full"
+						h="full"
+						transition="all 0.8s ease-in-out"
+					/>
+				</Box>
+			</Box>
+
+			{/* Enhanced navigation arrows with floating effect */}
+			<Button
+				position="absolute"
+				left={["2", "3", "4"]}
+				top="50%"
+				transform="translateY(-50%)"
+				bg="whiteAlpha.800"
+				color="gray.700"
+				borderRadius="full"
+				w={["10", "12", "14"]}
+				h={["10", "12", "14"]}
+				fontSize={["lg", "xl", "2xl"]}
+				_hover={{ 
+					bg: "whiteAlpha.900", 
+					transform: "translateY(-50%) scale(1.1) rotate(-10deg)",
+					boxShadow: "0 8px 25px rgba(0,0,0,0.2)"
+				}}
+				onClick={() => setCurrentSlide((prev) => (prev - 1 + slideshowItems.length) % slideshowItems.length)}
+				zIndex="18"
+				minW="0"
+				transition="all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)"
+				animation="arrowFloat 4s ease-in-out infinite"
+				sx={{
+					"@keyframes arrowFloat": {
+						"0%, 100%": { transform: "translateY(-50%) translateX(0px)" },
+						"50%": { transform: "translateY(-50%) translateX(-5px)" }
+					}
+				}}
+			>
+				‹
+			</Button>
+			<Button
+				position="absolute"
+				right={["2", "3", "4"]}
+				top="50%"
+				transform="translateY(-50%)"
+				bg="whiteAlpha.800"
+				color="gray.700"
+				borderRadius="full"
+				w={["10", "12", "14"]}
+				h={["10", "12", "14"]}
+				fontSize={["lg", "xl", "2xl"]}
+				_hover={{ 
+					bg: "whiteAlpha.900", 
+					transform: "translateY(-50%) scale(1.1) rotate(10deg)",
+					boxShadow: "0 8px 25px rgba(0,0,0,0.2)"
+				}}
+				onClick={() => setCurrentSlide((prev) => (prev + 1) % slideshowItems.length)}
+				zIndex="18"
+				minW="0"
+				transition="all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)"
+				animation="arrowFloat 4s ease-in-out infinite 2s"
+				sx={{
+					"@keyframes arrowFloat": {
+						"0%, 100%": { transform: "translateY(-50%) translateX(0px)" },
+						"50%": { transform: "translateY(-50%) translateX(5px)" }
+					}
+				}}
+			>
+				›
+			</Button>
+
+			{/* Animated background particles */}
+			{[...Array(6)].map((_, i) => (
+				<Box
+					key={`particle-${i}`}
+					position="absolute"
+					w={`${20 + Math.random() * 40}px`}
+					h={`${20 + Math.random() * 40}px`}
+					borderRadius="50%"
+					bg={`${['blue', 'green', 'yellow', 'red', 'purple', 'pink'][i]}.100`}
+					opacity="0.3"
+					left={`${Math.random() * 80 + 10}%`}
+					top={`${Math.random() * 80 + 10}%`}
+					animation={`particleFloat ${5 + Math.random() * 5}s ease-in-out infinite ${Math.random() * 2}s`}
+					zIndex="1"
+					sx={{
+						"@keyframes particleFloat": {
+							"0%, 100%": { 
+								transform: "translateY(0px) rotate(0deg) scale(1)",
+								opacity: 0.3 
+							},
+							"33%": { 
+								transform: "translateY(-20px) rotate(120deg) scale(1.2)",
+								opacity: 0.5 
+							},
+							"66%": { 
+								transform: "translateY(10px) rotate(240deg) scale(0.8)",
+								opacity: 0.2 
+							}
+						}
+					}}
+				/>
+			))}
+
+			{/* Enhanced navigation dots with animated colors */}
+			<HStack
+				position="absolute"
+				bottom={["3", "4", "6"]}
+				left="50%"
+				transform="translateX(-50%)"
+				spacing={["2", "2", "3"]}
+				zIndex="20"
+				bg="whiteAlpha.800"
+				borderRadius="full"
+				px="4"
+				py="2"
+				backdropFilter="blur(10px)"
+			>
+				{slideshowItems.map((item, index) => (
+					<Box
+						key={index}
+						w={["3", "3", "4"]}
+						h={["3", "3", "4"]}
+						borderRadius="full"
+						bg={currentSlide === index ? item.borderColor : "gray.300"}
+						cursor="pointer"
+						transition="all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)"
+						onClick={() => setCurrentSlide(index)}
+						_hover={{
+							transform: "scale(1.5) rotate(180deg)",
+							bg: currentSlide === index ? item.borderColor : "gray.500"
+						}}
+						border={["1px", "1px", "2px"]} 
+						borderColor="white"
+						position="relative"
+						sx={currentSlide === index ? {
+							animation: "dotPulse 2s ease-in-out infinite",
+							"@keyframes dotPulse": {
+								"0%, 100%": { transform: "scale(1)", boxShadow: "0 0 0 0 rgba(59, 130, 246, 0.7)" },
+								"50%": { transform: "scale(1.2)", boxShadow: "0 0 0 4px rgba(59, 130, 246, 0)" }
+							}
+						} : {}}
+					/>
+				))}
+			</HStack>
+		</Box>
+	);
+}
+
 function GuildsModal({ isOpen, onClose }) {
 	return (
 		<Modal isOpen={isOpen} onClose={onClose}>
@@ -474,7 +909,6 @@ function GuildsModal({ isOpen, onClose }) {
 			>
 				<ModalCloseButton
 					_hover={{
-						background: "red",
 						color: "white",
 						borderRadius: "50%",
 					}}
