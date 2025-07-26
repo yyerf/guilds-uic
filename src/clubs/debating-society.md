@@ -23,26 +23,26 @@ theme:
   primary_color: "#dd576d"
   secondary_color: "#fffff2"
 officers:
-  - name: Valerie Acorda
+  - name: Elle Jacqline D. Butaslac
     position: Mayor
     photo_name: ACORDA.jpg
-  - name: Kurt Artillo
+  - name: Joey Adrianne A. Bayonla
     position: Vice Mayor - Internal
     photo_name: ARTILLO.jpg
-  - name: Jaya Sarte
+  - name: Mykhael Claude A. Venarao
     position: Vice Mayor - External
     photo_name: SARTE.JPEG
-  - name: Mykhael Venarao
+  - name: Ryla Monique L. Narquita
     position: Secretary
     photo_name: VENARAO.JPG
-  - name: Elle Butaslac
+  - name: Lance Darcyll E. Gargar
     position: Treasurer
     photo_name: BUTASLAC.png
-  - name: Marienne Lastimosa
-    position: Auditor
+  - name: Hannah Angelica B. Alcasid
+    position: Training Director
     photo_name: LASTIMOSA.jpg
-  - name: Haneikah Loveres
-    position: PIO
+  - name: Gene Keannu Miguel S. Kinazo
+    position: Logistics
     photo_name: LOVERES.jpeg
   
 faqs:

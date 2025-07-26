@@ -21,44 +21,56 @@ theme:
   primary_color: "#800000"
   secondary_color: "#FE5B7A"
 officers:
-  - name: Stephanie S. Sambria
+  - name: Jana V. Pandio
     position: Editor-in-Chief
     photo_name: SSAMBRIA.jpeg
-  - name: Jana V. Pandio
-    position: Associate Editor - Main
+  - name: Rene, Jr. P. Amantillo
+    position: Associate Editor (Main Campus)
     photo_name: JPANDIO.JPG
-  - name: Trixxy M. Gardose
-    position: Associate Editor - Annex
+  - name: Noimar G. Dayoc
+    position: Associate Editor (Annex Campus)
     photo_name: TGARDOSE.jpg
-  - name: Cassandra P. Ongco
+  - name: Christina Beatrix P. Adaya
     position: Managing Editor
     photo_name: CONGCO.jpg
-  - name: Noimar G. Dayoc
+  - name: Saidamen M. Saripada
+    position: Assistant Managing Editor
+    photo_name: CONGCO.jpg
+  - name: Darylle O. Licayan
     position: Circulation Manager
     photo_name: NDAYOC.jpg
-  - name: Christina Beatrix P. Adaya
+  - name: Kier John Erick S. Panugao
     position: News Editor
     photo_name: CADAYA.png
-  - name: Darylle O. Licayan
-    position: Literary Editor
-    photo_name: DLICAYAN.JPG
-  - name: Rene Jr. P. Amantillo
-    position: Sports Editor
-    photo_name: RAMANTILLO.JPG
   - name: Aramellah E. Pare
+    position: Feature Editor
+    photo_name: DLICAYAN.JPG
+  - name: Aljamzari B. Suaeb
     position: Column Editor
+    photo_name: RAMANTILLO.JPG
+  - name: John Lawrence M. Bargola
+    position: Sports Editor
     photo_name: APARE.jpg
-  - name: Charizza Danielle O. Aguilar
-    position: Head Photojournalist
-    photo_name: CAGUILAR.jpeg
-  - name: Ericka Saddalani
+  - name: Eliza Jiann B. Bualan
     position: Head Cartoonist
-    photo_name: ESADDALANI.jpg
+    photo_name: CAGUILAR.jpeg
   - name: Earl Cedric M. Coronado 
     position: Lay-out Editor
     photo_name: ECORONADO.jpg
-  - name: Kier John Erick S. Panugao
+  - name: Charizza Danielle O. Aguilar
+    position: Head Photojournalist
+    photo_name: KPANUGAO.png
+  - name: Mikylla Marie M. Maloon
     position: Social Media Manager
+    photo_name: KPANUGAO.png
+  - name: Sophia Margareth D. Pulgado
+    position: Assistant Social Media Manager
+    photo_name: KPANUGAO.png
+  - name: Adonah Mica Obenza
+    position: Team I See, UIC Head
+    photo_name: KPANUGAO.png
+  - name: Althea Monique S. Correos
+    position: Team TCI Talks Head
     photo_name: KPANUGAO.png
 
 faqs:

@@ -22,38 +22,41 @@ theme:
   secondary_color: "#1f5014"
 
 officers:
-  - name: Datuyaman Datumanong 
+  - name: Datuyaman C. Datumanong 
     position: Mayor
     photo_name: DATUMANONG.jpg
-  - name: Prince Abdul Malik Dalao
-    position: Chief Executive Director (Internal)
+  - name: Asheelah O. Mala
+    position: Vice Mayor (Internal)
     photo_name: DALAO.png
-  - name: Al Modjib Hassan
-    position: Executive Director (External)
+  - name: Hanaemar C. Adel
+    position: Vice Mayor (External)
     photo_name: HASSAN.jpeg
-  - name: Jasnaera Moro
-    position: Delegated Assistant
+  - name: Janine P. Elias
+    position: Secretary
     photo_name: MORO, J.JPG
-  - name: Joan Macar
-    position: Finance Director
+  - name: Queen-Aleiya Y. Silongan
+    position: Assistant Secretary
     photo_name: MACAR.png
-  - name: Janine Elias
-    position: Program Director
+  - name: Kenzen Q. Asug
+    position: Treasurer
     photo_name: ELIAS.PNG
-  - name: Roselyn Macar Mangilay
-    position: Auditor
+  - name: Sandara Umda
+    position: Auditor / Asst. PIO
     photo_name: MANGILAY.jpg
-  - name: Hissam Moro
+  - name: Najeeb Mapantas
     position: Technical Head
     photo_name: MORO,H.png
-  - name: Rhayzza Samman
-    position: Communications Head
+  - name: Hairajay A. Abilosa
+    position: PIO/HR
     photo_name: SAMMAN.jpg
-  - name: Bai Gregg Guanzon 
-    position: Logistics Head
+  - name: Ysh-haaq I. Musa 
+    position: Admin and Logistics Head
     photo_name: GUANZON.PNG
-  - name: Aaliyah Daragosa
+  - name: Reina Mala
     position: Creatives Head
+    photo_name: DARAGOSA.png
+  - name: Bai Fayza S. Usman
+    position: Documentations Head
     photo_name: DARAGOSA.png
   
 faqs:

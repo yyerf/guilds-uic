@@ -25,45 +25,86 @@ theme:
   secondary_color: "#3ff7252"
 
 officers:
-  - name: Pyae Sone Chan Thar Aung
-    position: President
-    photo_name: aung.JPG
-  - name: Febe Quenyht Angeles
-    position: Vice - President Internal
-    photo_name: angeles.png
-  - name: Reuelle Kesha Margate
-    position: Vice - President External
-    photo_name: margate.jpeg
-  - name: Stefani El Joy Lasay
-    position: Secretary
-    photo_name: lasay.jpg
-  - name: Valerie Joy Tano
-    position: Asst. Secretary
-    photo_name: tano.jpeg
-  - name: Sophia Bianca Ehira
-    position: Treasurer
-    photo_name: ehira.png
-  - name: Diane Quijano
-    position: Auditor
-    photo_name: quijano.png
-  - name: Lance Dela Torre
-    position: PIO
-    photo_name: dela_torre.png
-  - name: Rysel Mae Cuyong
-    position: Creatives Head
-    photo_name: cuyong.png
-  - name: Ivy Niera Rubillar
-    position: Documentation Head
-    photo_name: rubillar.jpg
-  - name: Al Gabriel Orig
-    position: Technical Head
-    photo_name: orig.jpg
-  - name: Charles Andre Franco Nieves
-    position: Moderator
-    photo_name: nieves.jpg
-  - name: Rene Barbiera, II
-    position: Adviser
-    photo_name: barbiera.jpg
+- name: Pyae Sone Chan Thar Aung
+  position: Mayor
+  photo_name: aung.jpg
+
+- name: Reuelle Kesha Anne A. Margate
+  position: Vice-Mayor (Internal)
+  photo_name: margate.jpeg
+
+- name: Lance Dela Torre
+  position: Vice-Mayor (External)
+  photo_name: DELA TORRE, LANCE - Vice Mayor External.jpg
+
+- name: Stefani El Joy B. Lasay
+  position: Secretary
+  photo_name: STEFANI EL JOY LASAY - SECRETARY.jpg
+
+- name: Janyl Bianica P. Joaquin
+  position: Assistant Secretary
+  photo_name: JOAQUIN, JANYL BIANICA - ASST SECRETARY.jpeg
+
+- name: Sophia Bianca Ehira
+  position: Treasurer
+  photo_name: EHIRA, SOPHIA BIANCA - TREASURER.jpeg
+
+- name: Ralf Miguel F. Pombo
+  position: Auditor
+  photo_name: POMBO, RALF MIGUEL - AUDITOR.jpeg
+
+- name: Valerie Joy Tano
+  position: Public Information Officer
+  photo_name: TANO, VALERIE JOY G - P.I.O.jpeg
+
+- name: Al Gabriel Orig
+  position: Technical Head
+  photo_name: ORIG, AL GABRIEL - TECHNICAL HEAD.jpg
+
+- name: Kurt Vincent S. Lopena
+  position: Creative Head I
+  photo_name: LOPENA KURT VINCENT S. _ Creative Head_.png
+
+- name: Reah Jane M. Dominise
+  position: Creative Head II
+  photo_name: Dominise_Creative2.jpg
+
+- name: Laile Dawn Jenine C. Narreto
+  position: Production Head
+  photo_name: NARRETO, LAILE DAWN JENINE C.- PRODUCTION HEAD.png
+
+- name: Jianne Rabacal
+  position: Documentation Head I
+  photo_name: RABACAL, JIANNE - DOCUMENTATION HEAD.jpeg
+
+- name: Wai Htet Kyaw
+  position: Documentation Head II
+  photo_name: Wai Htet Kyaw - DOCUMENTATION Head.jpg
+
+- name: Queenzy Faith C. Baton
+  position: Research & Logistics I
+  photo_name: BATON, QUEENZY FAITH C. _ Research & Logistics.jpg
+
+- name: Htun Htun Win
+  position: Research & Logistics II
+  photo_name: HTUN HTUN WIN _ Research & Logistics.jpg
+
+- name: Josh Marvel Katsuhiko B. Saco
+  position: Student Buddy Manager I
+  photo_name: Saco_Buddy1.jpg
+
+- name: Tony R. Pomeroy
+  position: Student Buddy Manager II
+  photo_name: Tony R. Pomeroy _ Student Buddy Manager.jpg
+
+- name: Apple Jane Maguinsay
+  position: Student Buddy Manager III
+  photo_name: MAGUINSAY, APPLE JANE - STUDENT BUDDY MANAGER.png
+
+- name: Sharissa C. Olayer
+  position: Student Buddy Manager IV
+  photo_name: Olayer_Buddy4.jpg
+
 faqs:
   - question: What are the activities in the UIC Global Leaders Club?
     answer: All activities of the UIC Global Leaders Club are set on a national or international scale, with some in collaboration with both local and international partner universities. With the onset of the pandemic, these activities are held through online platforms such as Zoom Meetings. Moreover, they are targeted towards training its members to be globally competitive, 21st century student leaders who are empowered and change-resistant.

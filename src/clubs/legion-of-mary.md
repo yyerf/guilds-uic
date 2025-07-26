@@ -1,5 +1,5 @@
 ---
-name: Bibliophile Club
+name: Legion Of Mary
 org_type: non-academic
 links:
   - label: Facebook
@@ -24,46 +24,31 @@ theme:
   form_url: https://forms.gle/p3GQhMv7CNAm1zkZ9 -->
 
 officers:
-  - name: Elaine May C. Maboloc
+  - name: Rhea Jane Buat
     position: Mayor
     photo_name: blank_pic.webp
-  - name: Jachelle Ann Salinas
+  - name: Charlene May Arquio
     position: Vice Mayor (Internal)
     photo_name: blank_pic.webp
-  - name: Jannabelle I. Matilac
+  - name: Altheafaye B. Lesiguez
     position: Vice Mayor (External)
     photo_name: blank_pic.webp
-  - name: Mildred U. Mabala
+  - name: Lorraine May S. Perdizo
     position: Secretary
     photo_name: blank_pic.webp
-  - name: Shairine L. Lachica
+  - name: Grashyela Samantha C. Autentico
+    position: Assistant Secretary
+    photo_name: blank_pic.webp
+  - name: Dennis S. Buslon
     position: Treasurer
     photo_name: blank_pic.webp
-  - name: Rhea Wynonnah L. Lumayag
+  - name: Reamae Pondias
     position: Auditor
     photo_name: blank_pic.webp
-  - name: Carl Stephen S. Sanguenza
-    position: PIO (Main)
+  - name: Viviene Cahrl G. Carin
+    position: PIO
     photo_name: blank_pic.webp
-  - name: Rhea Jane F. Buat
-    position: PIO (Annex)
-    photo_name: blank_pic.webp
-  - name: Rhea Jane F. Buat
-    position: Food Committee Head
-    photo_name: blank_pic.webp
-  - name: Jachelle Ann Salinas
-    position: Creatives Committee Head
-    photo_name: blank_pic.webp
-  - name: Mary Grcae Buat
-    position: Documentation Committee Head
-    photo_name: blank_pic.webp
-  - name: Shairine L. Lachica
-    position: Social Media Committee Head
-    photo_name: blank_pic.webp
-  - name: Jannabelle I. Matilac
-    position: Technical Committee Head
-    photo_name: blank_pic.webp
-
+  
 faqs:
   - question: Is Bibliophile Club a bible-related club?
     answer: No

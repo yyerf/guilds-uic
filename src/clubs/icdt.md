@@ -40,35 +40,44 @@ officers:
   - name: Sophia Bianca Ehira
     position: Mayor
     photo_name: EHIRA, SOPHIA BIANCA.png
-  - name: Kara Angela Aldeano
-    position: Vice Mayor
+  - name: Ahron Joshua Sacay
+    position: Vice Mayor (External)
     photo_name: ALDEANO,KARAANGELA.png
-  - name: Princess Angel Nieves
-    position: Secretary
+  - name: Hazel Ann Jotoy
+    position: Vice Mayor (Internal)
     photo_name: NIEVES, PRINCESS ANGEL.png
-  - name: Stefani El Joy Lasay
-    position: Asst. Secretary
+  - name: Kara Angela Aldeano
+    position: Secretary
     photo_name: LASAY, STEFANI.png
-  - name: Genen Libres
+  - name: Johannah Lee Lao
+    position: Assistant Secretary
+    photo_name: LASAY, STEFANI.png
+  - name: Ralf Miguel Pombo
     position: Treasurer
     photo_name: LIBRES, GENEN.jpg
-  - name: Ahron Joshua Sacay
+  - name: Pinky Pilapil
     position: Auditor
     photo_name: SACAY, AHRON.jpg
-  - name: Pinky Pilapil
+  - name: Apple Jane Maguinsay
+    position: Business Manager
+    photo_name: SACAY, AHRON.jpg
+  - name: Littlesnow Berdin II
+    position: Business Manager
+    photo_name: SACAY, AHRON.jpg
+  - name: Jinwhill Vinculado
     position: P.I.O
     photo_name: PILAPIL, PINKY.jpg
-  - name: Jinwhill Vinculado
+  - name: Princess Angel Nieves
     position: Props-in-charge
     photo_name: VINCULADO, JINWHILL.jpg
-  - name: Johannah Lee Lao
+  - name: Dexter Contemplo
     position: Props-in-charge
     photo_name: LEELAO,JOHANNAH.png
-  - name: Ralf Miguel Pombo
-    position: Costume-in-charge
+  - name: Stefani Lasay
+    position: Props-in-charge
     photo_name: POMBO, RALF MIGUEL.jpg
-  - name: Hazel Ann Jotoy
-    position: Costume-in-charge
+  - name: Lesther Clenuar
+    position: Props-in-charge
     photo_name: JOTOY, HAZEL ANN.png
 
 faqs:
