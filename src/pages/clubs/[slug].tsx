@@ -705,24 +705,34 @@ function InterestedBox({ club }: { club: Club }) {
 										as="a"
 										href={link.url}
 										target="_blank"
-										bg="rgba(255,255,255,0.7)"
+										bg={link.label.toLowerCase().includes('facebook') ? "#1877F2" : "rgba(255,255,255,0.7)"}
 										backdropFilter="blur(5px)"
-										color="gray.700"
+										color={link.label.toLowerCase().includes('facebook') ? "white" : "gray.700"}
 										border="1px solid"
-										borderColor="rgba(0,0,0,0.1)"
+										borderColor={link.label.toLowerCase().includes('facebook') ? "#1877F2" : "rgba(0,0,0,0.1)"}
 										borderRadius="full"
 										px="6"
 										py="3"
 										w="full"
 										fontWeight="500"
+										leftIcon={
+											link.label.toLowerCase().includes('facebook') ? 
+											<BsFacebook fontSize="1.2rem" /> : 
+											undefined
+										}
 										_hover={{
-											bg: "rgba(255,255,255,0.9)",
+											bg: link.label.toLowerCase().includes('facebook') ? "#166FE5" : "rgba(255,255,255,0.9)",
 											transform: "translateY(-1px)",
-											boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
+											boxShadow: link.label.toLowerCase().includes('facebook') ? 
+												"0 4px 15px rgba(24, 119, 242, 0.4)" : 
+												"0 4px 10px rgba(0,0,0,0.1)"
 										}}
 										transition="all 0.3s ease"
 									>
-										{link.label}
+										{link.label.toLowerCase().includes('facebook') ? 
+											`Follow us on Facebook` : 
+											link.label
+										}
 									</Button>
 								)
 							)}
