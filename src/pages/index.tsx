@@ -211,7 +211,7 @@ export default function Home() {
 									w="full"
 									justifyItems="center"
 								>
-									{["Academic Club", "Non-Academic Club", "Music and Arts", "Public Speaking", "Religion", "Learning"].map(tag => {
+									{clubTags?.map(tag => {
 										const isSelected = selectedTags.includes(tag);
 										const isDisabled = selectedTags.length >= 3 && !isSelected;
 										return (
@@ -571,7 +571,7 @@ function ClubSlideshow() {
 			image: "/slideshow/clubfair6.jpg",
 			description: "Building tomorrow's leaders today",
 			borderColor: "#26076eff" 
-		}
+		},
 	];
 
 	const [currentSlide, setCurrentSlide] = useState(0);
