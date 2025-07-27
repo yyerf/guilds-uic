@@ -73,7 +73,9 @@ export default function ClubPage({ club }: { club: Club }) {
 
 			<Container maxWidth="85rem" mt="20">
 				<ClubContent club={club} />
-				<ClubOfficers club={club} />
+				{/* <ClubOfficers club={club} /> 
+				removed the officers section for now, as it is not available for all clubs
+				*/} 
 				{club.faqs && <ClubFAQ club={club} />}
 				{(club.registration || club.links) && <InterestedBox club={club} />}
 			</Container>
@@ -144,100 +146,183 @@ const StyledSwiperSlide = styled(SwiperSlide)`
 function ClubBox({ club }: { club: Club }) {
 	return (
 		<Box
-			flexDirection="column"
-			bg={club.theme?.secondary_color ?? '#7DF1B9'}
-			border="5px solid black"
-			borderRadius="35px"
-			boxShadow="5px 10px black"
+			bg="white"
+			borderRadius="25px"
+			border="1px solid"
+			borderColor="rgba(0,0,0,0.1)"
+			overflow="hidden"
+			boxShadow="0 10px 40px rgba(0,0,0,0.15)"
 		>
-
 			{/* Cover Photo */}
 			<Box 
-				// {sm: "18rem", md: "26rem"}
-				h={["14rem","18rem","26rem"]}
+				h={["200px", "250px", "350px"]}
 				w="full"
 				backgroundImage={`url(${clubAssetURL(club, 'cover_photo')})`}
 				backgroundSize="cover"
 				backgroundPosition="center"
-				borderTopRadius="30px"
-				borderBottom="3px black solid" />
-
-			{/* Club Logo */}
-			<Box
-				px="40px"
-				display={["flex", "flex", "block"]}
-				justifyContent={["center", "center", "left"]}
+				position="relative"
+				_before={{
+					content: '""',
+					position: "absolute",
+					top: 0,
+					left: 0,
+					right: 0,
+					bottom: 0,
+					bg: "rgba(0,0,0,0.3)",
+					zIndex: 1
+				}}
 			>
-				<Img
-					mt="-7rem"
-					pos="absolute"
-					w = {['150px','200px']}
-					src={clubAssetURL(club, 'logo')}
-					objectFit="cover"
-					alt="gdsc-logo"
-					borderRadius="50%"
-					filter={"drop-shadow(3px 3px 0 black) drop-shadow(-3px 3px 0 black) drop-shadow(3px -3px 0 black) drop-shadow(-3px -3px 0 black) drop-shadow(5px 7px 0 rgba(0,0,0,0.3))"}
-				/>
+				{/* Club Logo */}
+				<Box
+					position="absolute"
+					bottom="-60px"
+					left={["50%", "50%", "40px"]}
+					transform={["translateX(-50%)", "translateX(-50%)", "none"]}
+					zIndex={2}
+				>
+					<Box
+						w={["120px", "140px", "160px"]}
+						h={["120px", "140px", "160px"]}
+						borderRadius="full"
+						overflow="hidden"
+						bg="white"
+						p="2"
+						boxShadow="0 8px 30px rgba(0,0,0,0.3)"
+					>
+						<Img
+							w="full"
+							h="full"
+							src={clubAssetURL(club, 'logo')}
+							objectFit="cover"
+							alt={`${club.name} logo`}
+							borderRadius="full"
+						/>
+					</Box>
+				</Box>
 			</Box>
 
 			{/* Club Information */}
-			<Flex
-				mt={["4", "7", "0"]}
-				ml={["0", "0", "16.3rem"]}
-				flexDir={["column", "column", "row"]}
-				alignItems={["center", "center", "flex-start"]}
-				justifyContent={"space-between"}
-				pt={["10", "20", "6"]}
+			<Box
+				pt={["80px", "80px", "100px"]}
+				pb="8"
+				px={["6", "8", "12"]}
+				textAlign={["center", "center", "left"]}
+				bg="white"
 			>
-				<Box
-					display="flex"
-					flexDir="column"
-					alignItems={["center", "center", "flex-start"]}
-				>
-					{/* Club Name & Description */}
-					<Box textAlign={["center", "center", "left"]} px={{sm: "8", md: 0}} pb={8} pr={club.org_type == 'academic' ? {sm: 8, lg: 28} : 0}>
-						<Heading fontSize={['25','30','40']} mb="2">
-							{club.name}
-						</Heading>
-						<Text fontSize={{sm: 18, lg: 20}} textAlign={"center"} paddingX={["3","2","0"]}>{club.description?.short ?? ""}</Text>
-					</Box>
-
-					{/* Social Media Links */}
-					{club.links && (<HStack my="10" spacing="4" wrap="wrap" px={{sm: 8, md: 0}} justifyContent="center">
-						{/* KEEP THE ICONS FOR LATER :>> */}
-						{/* <BsGithub size="30" />
-						<Box h="5" borderLeft="1px solid gray" />
-						<BsFacebook size="30" /> */}
-						<Text fontSize="xl">Follow us on:</Text>
-						{club.links.map((link, i, arr) => (
-							<Fragment key={`link_top_${link._id}`}>
-								{link.label !== 'Contact Number' ? 
-									<Link key={`link_${link._id}`} href={link.url} fontSize="xl">{link.label}</Link> :
-									<Text textAlign="center" fontSize="xl">{link.label}: {link.url}</Text>}
-								{i < arr.length - 1 && <Box h="3" borderRight="#000 1px solid" />}
-							</Fragment>
-						))}
-					</HStack>)}
+				{/* Club Name & Description */}
+				<Box mb="8">
+					<Heading 
+						fontSize={["2xl", "3xl", "4xl"]} 
+						fontWeight="700"
+						color="gray.800"
+						mb="4"
+						textAlign="center"
+					>
+						{club.name}
+					</Heading>
+					<Text 
+						fontSize={["md", "lg", "xl"]} 
+						color="gray.600"
+						lineHeight="1.6"
+						textAlign="center"
+						maxW="800px"
+						mx="auto"
+					>
+						{club.description?.short ?? ""}
+					</Text>
 				</Box>
 
+				{/* Social Media Links */}
+				{club.links && (
+					<Box mb="6">
+						<Text 
+							fontSize="lg" 
+							fontWeight="600" 
+							color="gray.700" 
+							mb="4"
+							textAlign="center"
+						>
+							Connect with us
+						</Text>
+						<Flex 
+							wrap="wrap" 
+							justify="center"
+							gap="3"
+						>
+							{club.links.map((link, i) => (
+								<Fragment key={`link_top_${link._id}`}>
+									{link.label !== 'Contact Number' ? (
+										<Button
+											as="a"
+											key={`link_${link._id}`}
+											href={link.url}
+											target="_blank"
+											size="sm"
+											bg="gray.100"
+											color="gray.700"
+											border="1px solid"
+											borderColor="gray.200"
+											borderRadius="full"
+											px="4"
+											py="2"
+											fontWeight="500"
+											_hover={{
+												bg: "gray.200",
+												transform: "translateY(-1px)",
+												boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
+											}}
+											transition="all 0.3s ease"
+										>
+											{link.label}
+										</Button>
+									) : (
+										<Text 
+											key={`contact_${link._id}`}
+											fontSize="sm"
+											color="gray.600"
+											bg="gray.100"
+											px="4"
+											py="2"
+											borderRadius="full"
+											border="1px solid"
+											borderColor="gray.200"
+										>
+											{link.label}: {link.url}
+										</Text>
+									)}
+								</Fragment>
+							))}
+						</Flex>
+					</Box>
+				)}
+
 				{/* Interested Button */}
-				{(club.org_type === 'non-academic' && club.registration) && <Button
-					as="a"
-					href="#interested"
-					my={["10", "10", "0"]}
-					w={["90%", "90%", "0"]}
-					mx={[0, 0, "10"]}
-					color="white"
-					bg="#0057FF"
-					border="1px solid black"
-					borderRadius="0"
-					leftIcon={<AiOutlineHeart color="#000" fontSize="1.2rem" />}
-					fontSize="1rem"
-					px="5rem"
-				>
-					Interested
-				</Button>}
-			</Flex>
+				{(club.org_type === 'non-academic' && club.registration) && (
+					<Flex justify="center">
+						<Button
+							as="a"
+							href="#interested"
+							bg="#2670FF"
+							color="white"
+							borderRadius="full"
+							px="8"
+							py="6"
+							fontSize="lg"
+							fontWeight="600"
+							leftIcon={<AiOutlineHeart fontSize="1.2rem" />}
+							boxShadow="0 4px 15px rgba(38, 112, 255, 0.3)"
+							_hover={{
+								bg: "#1557d8",
+								transform: "translateY(-2px)",
+								boxShadow: "0 6px 20px rgba(38, 112, 255, 0.4)"
+							}}
+							transition="all 0.3s ease"
+						>
+							Join {club.name}
+						</Button>
+					</Flex>
+				)}
+			</Box>
 		</Box>
 	);
 }
@@ -245,10 +330,32 @@ function ClubBox({ club }: { club: Club }) {
 function ClubContent({ club }: { club: Club }) {
 	return (
 		<VStack mt="3rem" spacing="3rem">
-			<Box>
-				<Heading>Description</Heading>
-				<Box h="2" w="100%" bg="#94BAF9" my="4" />
-				<Text fontSize={["20", "25"]}>{club.description.full}</Text>
+			<Box w="full">
+				<Heading 
+					fontSize={["2xl", "3xl"]} 
+					fontWeight="600" 
+					color="gray.800"
+					mb="6"
+				>
+					About {club.name}
+				</Heading>
+				<Box 
+					bg="rgba(255, 255, 255, 0.1)" 
+					backdropFilter="blur(10px)"
+					borderRadius="20px"
+					p="8"
+					border="1px solid"
+					borderColor="rgba(0,0,0,0.1)"
+				>
+					<Text 
+						fontSize={["md", "lg"]} 
+						lineHeight="1.8"
+						color="gray.700"
+						textAlign="justify"
+					>
+						{club.description.full}
+					</Text>
+				</Box>
 			</Box>
 
 			<Box w="full">
@@ -260,74 +367,178 @@ function ClubContent({ club }: { club: Club }) {
 
 function ClubFAQ({ club }: { club: Club }) {
 	return (
-		<Box my="3rem">
-			<Heading>FAQs</Heading>
-			<Box h="2" w="100%" bg="#94BAF9" />
-			<Accordion allowToggle my="10">
-				{(club.faqs ?? []).map((faq, i) => (<AccordionItem
-					key={`faq_${club._raw.flattenedPath}_i`}
-					border="5px solid black"
-					borderRadius="24px"
-					boxShadow="8px 8px black"
-					mb="1.4rem"
-				>
-					{({ isExpanded }) => (
-						<>
-							<AccordionButton>
-								<Box
-									flex="1"
-									textAlign="left"
-									fontFamily="Space Grotesk"
-									fontWeight="bold"
-									fontSize="22px"
-								>
-									{faq.question ?? 'Question'}
-								</Box>
-								<Box
-									transform={isExpanded ? "rotate(45deg)" : ""}
-									transition="transform 150ms ease"
-								>
-									<BsPlus fontSize="40" />
-								</Box>
-							</AccordionButton>
-							<AccordionPanel pb={4}>{faq.answer ?? 'Answer'}</AccordionPanel>
-						</>
-					)}
-				</AccordionItem>)
-			)}
-			</Accordion>
+		<Box my="3rem" w="full">
+			<Heading 
+				fontSize={["2xl", "3xl"]} 
+				fontWeight="600" 
+				color="gray.800"
+				mb="6"
+				textAlign="center"
+			>
+				Frequently Asked Questions
+			</Heading>
+			
+			<Box
+				bg="rgba(255, 255, 255, 0.1)"
+				backdropFilter="blur(10px)"
+				borderRadius="20px"
+				p="6"
+				border="1px solid"
+				borderColor="rgba(0,0,0,0.1)"
+			>
+				<Accordion allowToggle>
+					{(club.faqs ?? []).map((faq, i) => (
+						<AccordionItem
+							key={`faq_${club._raw.flattenedPath}_${i}`}
+							border="1px solid"
+							borderColor="rgba(0,0,0,0.1)"
+							borderRadius="15px"
+							mb="4"
+							bg="rgba(255,255,255,0.5)"
+							backdropFilter="blur(5px)"
+							_last={{ mb: 0 }}
+						>
+							{({ isExpanded }) => (
+								<>
+									<AccordionButton
+										borderRadius="15px"
+										_hover={{
+											bg: "rgba(255,255,255,0.7)"
+										}}
+										py="4"
+									>
+										<Box
+											flex="1"
+											textAlign="left"
+											fontWeight="600"
+											fontSize={["md", "lg"]}
+											color="gray.800"
+										>
+											{faq.question ?? 'Question'}
+										</Box>
+										<Box
+											transform={isExpanded ? "rotate(45deg)" : ""}
+											transition="transform 200ms ease"
+											color="gray.600"
+										>
+											<BsPlus fontSize="24" />
+										</Box>
+									</AccordionButton>
+									<AccordionPanel 
+										pb={4} 
+										pt={0}
+										fontSize="md"
+										color="gray.700"
+										lineHeight="1.6"
+									>
+										{faq.answer ?? 'Answer'}
+									</AccordionPanel>
+								</>
+							)}
+						</AccordionItem>
+					))}
+				</Accordion>
+			</Box>
 		</Box>
 	);
 }
 
 function ClubOfficers({ club }: { club: Club }) {
 	return (
-		<Box my="3rem">
-			<Box
-				minH="340"
-				bg="#FFE58A"
-				border="5px solid black"
-				borderRadius="35px"
-				boxShadow="10px 10px black"
+		<Box my="3rem" w="full">
+			<Heading 
+				fontSize={["2xl", "3xl"]} 
+				fontWeight="600" 
+				color="gray.800"
+				mb="6"
+				textAlign="center"
 			>
-				<Heading px="8" pt="8" mb="1rem">Officers</Heading>
-				<Flex direction="row" px="8" pb="8" overflowX={'auto'} columnGap="2rem">
-					{club.officers.map(officer => (
-						<Box flexShrink={0} width={{sm: (1/3 * 100) + '%', md: (1/6 * 100) + '%', lg: (1/8 * 100) + '%'}} key={`officer_${officer.name}`}>
-							<VStack>
-								<Image
-									h="10rem"
-									w="10rem"
-									clipPath="circle()"
-									objectFit="cover"
-									alt={officer.name}
-									fallbackSrc="/blank-profile.webp"
-									src={clubAssetURL(club, 'officer_images', officer.photo_name)}
-								></Image>
+				Meet Our Officers
+			</Heading>
+			
+			<Box
+				bg="rgba(255, 255, 255, 0.1)"
+				backdropFilter="blur(10px)"
+				borderRadius="20px"
+				p="8"
+				border="1px solid"
+				borderColor="rgba(0,0,0,0.1)"
+			>
+				<Flex 
+					direction="row" 
+					overflowX="auto" 
+					gap="6"
+					pb="4"
+					css={{
+						'&::-webkit-scrollbar': {
+							height: '8px',
+						},
+						'&::-webkit-scrollbar-track': {
+							background: 'rgba(0,0,0,0.1)',
+							borderRadius: '10px',
+						},
+						'&::-webkit-scrollbar-thumb': {
+							background: 'rgba(0,0,0,0.3)',
+							borderRadius: '10px',
+						},
+						'&::-webkit-scrollbar-thumb:hover': {
+							background: 'rgba(0,0,0,0.5)',
+						},
+					}}
+				>
+					{club.officers.map((officer, index) => (
+						<Box 
+							key={`officer_${officer.name}_${index}`}
+							flexShrink={0} 
+							minW="200px"
+							maxW="220px"
+						>
+							<VStack spacing="4">
+								<Box
+									position="relative"
+									overflow="hidden"
+									borderRadius="full"
+									bg="white"
+									p="1"
+									boxShadow="0 4px 20px rgba(0,0,0,0.15)"
+								>
+									<Image
+										h="120px"
+										w="120px"
+										borderRadius="full"
+										objectFit="cover"
+										alt={officer.name}
+										fallbackSrc="/blank-profile.webp"
+										src={clubAssetURL(club, 'officer_images', officer.photo_name)}
+										transition="transform 0.3s ease"
+										_hover={{
+											transform: "scale(1.05)"
+										}}
+									/>
+								</Box>
 
-								<Box textAlign="center">
-									<Text fontWeight="bold">{officer.name}</Text>
-									<Text>{officer.position}</Text>
+								<Box textAlign="center" w="full">
+									<Text 
+										fontWeight="600" 
+										fontSize="md"
+										color="gray.800"
+										noOfLines={2}
+										mb="1"
+									>
+										{officer.name}
+									</Text>
+									<Text 
+										fontSize="sm"
+										color="gray.600"
+										fontWeight="500"
+										bg="rgba(255,255,255,0.7)"
+										px="3"
+										py="1"
+										borderRadius="full"
+										noOfLines={1}
+									>
+										{officer.position}
+									</Text>
 								</Box>
 							</VStack>
 						</Box>
@@ -340,124 +551,185 @@ function ClubOfficers({ club }: { club: Club }) {
 
 function InterestedBox({ club }: { club: Club }) {
 	return (
-		<Flex
+		<Box
 			id="interested"
-			// h="428"
-			bg="#A3F9B6"
-			border="5px solid black"
-			borderRadius="35px"
-			boxShadow="10px 10px black"
+			bg="rgba(255, 255, 255, 0.1)"
+			backdropFilter="blur(10px)"
+			borderRadius="20px"
+			border="1px solid"
+			borderColor="rgba(0,0,0,0.1)"
 			my="9rem"
-			minH={["0px", "0px", "428px"]}
-			flexDirection={["column", "column", "row"]}
-			alignItems="center"
+			p="8"
 		>
-			{(club.org_type == 'non-academic' && club.registration) && <Flex
-				w={club.links && club.registration ? ["35%", "90%", "65%"] : "100%"}
-				direction="column"
-				alignItems={["center", "center", club.links && club.registration ? "normal" : "center"]}
-				px="2rem"
-				py={["2rem", "2rem", "0"]}
+			<Flex
+				flexDirection={["column", "column", "row"]}
+				alignItems="center"
+				gap="8"
 			>
-				<Heading 
-					textAlign={{sm: "center", md: !club.links ? "center" : "left"}} 
-					fontWeight="500">
-						Interested to join in <b>{club.name}</b>?
-				</Heading>
-				<Stack direction={{sm: "column", md: "row"}} width={{sm: "full", md: "auto"}} mt="2rem">
-					{club.registration.form_url && <Button
-						as="a"
-						href={club.registration.form_url}
-						target="_blank"
-						w={{sm: "full", md: "auto"}}
-						color="white"
-						bg="#0057FF"
-						border="1px solid black"
-						borderRadius="0"
-						fontSize="15"
-						px="6"
+				{(club.org_type == 'non-academic' && club.registration) && 
+					<Box
+						flex="1"
+						textAlign={["center", "center", club.links && club.registration ? "left" : "center"]}
 					>
-						Register
-					</Button>}
+						<Heading 
+							fontSize={["xl", "2xl"]}
+							fontWeight="600"
+							color="gray.800"
+							mb="6"
+						>
+							Interested to join <Text as="span" color="#2670FF">{club.name}</Text>?
+						</Heading>
+						
+						<Stack 
+							direction={["column", "row"]} 
+							spacing="4"
+							justify={["center", "center", club.links && club.registration ? "flex-start" : "center"]}
+						>
+							{club.registration.form_url && 
+								<Button
+									as="a"
+									href={club.registration.form_url}
+									target="_blank"
+									bg="#2670FF"
+									color="white"
+									borderRadius="full"
+									px="8"
+									py="6"
+									fontSize="md"
+									fontWeight="600"
+									boxShadow="0 4px 15px rgba(38, 112, 255, 0.3)"
+									_hover={{
+										bg: "#1557d8",
+										transform: "translateY(-2px)",
+										boxShadow: "0 6px 20px rgba(38, 112, 255, 0.4)"
+									}}
+									transition="all 0.3s ease"
+								>
+									Register Now
+								</Button>
+							}
 
-					{club.registration.livestream_url && <Button
-						as="a"
-						href={club.registration.livestream_url}
-						target="_blank"
-						w={{sm: "full", md: "auto"}}
-						color="white"
-						bg="#0057FF"
-						border="1px solid black"
-						borderRadius="0"
-						fontSize="15"
-						px="6"
-					>
-						Livestream
-					</Button>}
+							{club.registration.livestream_url && 
+								<Button
+									as="a"
+									href={club.registration.livestream_url}
+									target="_blank"
+									bg="transparent"
+									color="#2670FF"
+									border="2px solid #2670FF"
+									borderRadius="full"
+									px="8"
+									py="6"
+									fontSize="md"
+									fontWeight="600"
+									_hover={{
+										bg: "#2670FF",
+										color: "white",
+										transform: "translateY(-2px)"
+									}}
+									transition="all 0.3s ease"
+								>
+									Watch Livestream
+								</Button>
+							}
 
-					{club.registration.meeting_url && <Button
-						as="a"
-						href={club.registration.meeting_url}
-						target="_blank"
-						w={{sm: "full", md: "auto"}}
-						color="white"
-						bg="#0057FF"
-						border="1px solid black"
-						borderRadius="0"
-						fontSize="15"
-						px="6"
-					>
-						Join Event
-					</Button>}
-				</Stack>
-			</Flex>}
-			{(club.links && club.registration) && <Box
-				h={["0px", "0px", "428px"]}
-				w={["100%", "100%", "0px"]}
-				borderLeft={["0px", "10px dashed black", "10px dashed black"]}
-				borderBottom={["10px dashed black", "10px dashed black", "0px"]}
-				right="24"
-				top="24"
-			/>}
-			{club.links && <Box w={{base: "100%", md: "50%"}} mx={club.registration ? 0 : "auto"} h="100%" p="2rem">
-				<Heading fontSize="30" mb="1.3rem" textAlign={club.registration ? {sm: "center", md: "left"} : "center"}>
-					Connect with the club
-				</Heading>
-				<VStack spacing="10px" width={"full"}>
-				{(club.links?.slice(0, 4) ?? []).map(link => link.label === 'Contact Number' ? (
-					<Button
-						key={`link_interested_${club._raw.flattenedPath}_${link.label}`}
-						as="p"
-						px="55px"
-						py="25px"
-						bg="white"
-						borderWidth="4px"
-						borderColor="black"
-						borderRadius="0px"
-						textAlign="center"
-						width="full"
-					>
-						{link.label}: {link.url}
-					</Button>
-				) : (
-					<Button
-						key={`link_interested_${club._raw.flattenedPath}_${link.label}`}
-						as="a"
-						href={link.url}
-						target="_blank"
-						px="55px"
-						py="25px"
-						bg="white"
-						borderWidth="4px"
-						borderColor="black"
-						borderRadius="0px"
-						width="full"
-					>
-						{link.label}
-					</Button>
-				))}
-				</VStack>
-			</Box>}
-		</Flex>
+							{club.registration.meeting_url && 
+								<Button
+									as="a"
+									href={club.registration.meeting_url}
+									target="_blank"
+									bg="transparent"
+									color="#2670FF"
+									border="2px solid #2670FF"
+									borderRadius="full"
+									px="8"
+									py="6"
+									fontSize="md"
+									fontWeight="600"
+									_hover={{
+										bg: "#2670FF",
+										color: "white",
+										transform: "translateY(-2px)"
+									}}
+									transition="all 0.3s ease"
+								>
+									Join Event
+								</Button>
+							}
+						</Stack>
+					</Box>
+				}
+				
+				{(club.links && club.registration) && 
+					<Box
+						h={["1px", "1px", "120px"]}
+						w={["100%", "100%", "1px"]}
+						bg="rgba(0,0,0,0.2)"
+					/>
+				}
+				
+				{club.links && 
+					<Box flex="1" w="full">
+						<Heading 
+							fontSize={["lg", "xl"]}
+							fontWeight="600"
+							color="gray.800"
+							mb="6"
+							textAlign={club.registration ? ["center", "center", "left"] : "center"}
+						>
+							Connect with us
+						</Heading>
+						
+						<VStack spacing="3" w="full">
+							{(club.links?.slice(0, 4) ?? []).map(link => 
+								link.label === 'Contact Number' ? (
+									<Box
+										key={`link_interested_${club._raw.flattenedPath}_${link.label}`}
+										bg="rgba(255,255,255,0.7)"
+										backdropFilter="blur(5px)"
+										borderRadius="full"
+										px="6"
+										py="3"
+										w="full"
+										textAlign="center"
+										border="1px solid"
+										borderColor="rgba(0,0,0,0.1)"
+									>
+										<Text fontWeight="500" color="gray.700">
+											{link.label}: {link.url}
+										</Text>
+									</Box>
+								) : (
+									<Button
+										key={`link_interested_${club._raw.flattenedPath}_${link.label}`}
+										as="a"
+										href={link.url}
+										target="_blank"
+										bg="rgba(255,255,255,0.7)"
+										backdropFilter="blur(5px)"
+										color="gray.700"
+										border="1px solid"
+										borderColor="rgba(0,0,0,0.1)"
+										borderRadius="full"
+										px="6"
+										py="3"
+										w="full"
+										fontWeight="500"
+										_hover={{
+											bg: "rgba(255,255,255,0.9)",
+											transform: "translateY(-1px)",
+											boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
+										}}
+										transition="all 0.3s ease"
+									>
+										{link.label}
+									</Button>
+								)
+							)}
+						</VStack>
+					</Box>
+				}
+			</Flex>
+		</Box>
 	);
 }
