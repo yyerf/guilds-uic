@@ -10,20 +10,34 @@ type ClubSearchOptions = {
   page: string
 }
 
-const searchIndex = allClubs.map(c => {
-	return c.tags?.map((tag) => ({
-		id: c._id,
-		name: c.name,
-		tag,
-	})) ?? [];
-}).flat();
+const searchIndex = allClubs.map(club => ({
+	id: club._id,
+	name: club.name,
+	description: club.description?.full || '',
+	shortDescription: club.description?.short || '',
+	tags: club.tags?.join(' ') || '',
+	orgType: club.org_type || '',
+	// Create searchable text from all content
+	searchableText: [
+		club.name,
+		club.description?.full,
+		club.description?.short,
+		...(club.tags || []),
+		club.org_type
+	].filter(Boolean).join(' ')
+}));
 
-const minisarch = new MiniSearch({
-	fields: ["title", "tag", "org_type"],
+const minisearch = new MiniSearch({
+	fields: ["name", "description", "shortDescription", "tags", "orgType", "searchableText"],
 	storeFields: ["id"],
+	searchOptions: {
+		boost: { name: 2, shortDescription: 1.5 }, // Boost name and short description in results
+		fuzzy: 0.2, // Allow for small typos
+		prefix: true // Allow partial word matching
+	}
 });
 
-minisarch.addAll(searchIndex);
+minisearch.addAll(searchIndex);
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method !== "GET") {
@@ -35,7 +49,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
 	// Handle text search
 	if (params.q) {
-		const resultsFromSearch = Array.from(new Set(minisarch.search(params.q).map(result => result.id)));
+		const resultsFromSearch = Array.from(new Set(minisearch.search(params.q).map(result => result.id)));
 		results = resultsFromSearch.map(id => results.find(r => r._id === id)).filter(Boolean) as typeof allClubs;
 	}
 
