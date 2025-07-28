@@ -1,12 +1,12 @@
 ---
-name: PEER FACILITATORS’ CLUB
+name: Peer Facilitators Club
 org_type: non-academic
 links:
   - label: Facebook
     url: https://www.facebook.com/UICpfc 
   - label: Email
     url: uic.pfc@gmail.com
-    
+  
 description:
   full: The Peer Facilitators Club aims to promote friendship, develop values, and build strong relationships among students. Its key objectives include. Enhancing self-awareness and helping students understand and manage their emotions. Improving communication skills and facilitating openness in dealing with contemporary issues like drug abuse, relationships, and ecology. Cultivating leadership qualities and the ability to make intelligent choices based on facts. Assisting the guidance counselor in implementing programs and services. Building a deeper sense of service orientation and personality development to enhance students' self-image and self-esteem. Peer facilitators have the responsibility to help new students acclimate to the school environment, use positive peer influence, act as big brothers/sisters, and be good listeners and friends. The club offers an elective transformative program where students can volunteer as peer facilitators, spot co-learners with emotional concerns, facilitate psycho-educational activities, and refer them to the guidance counseling center.
 
@@ -14,7 +14,6 @@ description:
 
 tags:
   - Student Relations
-
 assets:
   logo: logo.png
   cover_photo: cover.jpeg
@@ -81,14 +80,9 @@ officers:
     photo_name: Moderator_picture.jpg
   
 faqs:
-  - question: Does the Peer Facilitators’ Club offer counseling?
-    answer: Yes, The Peer Facilitators Club offer counseling with the help of the Guidance Office counselors
-  - question: What can Peer Facilitators’ Club offer?
-    answer: Peer	Facilitators	Club	offers counseling with the help of the Guidance Office counselors, webinars like Mental Health Awareness etc. that the guidance office conducts
-  - question: Does the Peer Facilitators’ Club conduct community service?
-    answer: Yes, we conduct community services like Coastal Cleanup, Outreach Programs and Team Building
-  - question: Is Peer Facilitators’ Club an organization worth joining?
-    answer: Yes, because the Peer Facilitators’ Club provides services that aid you in coping with and dealing with your problems. The Peer facilitators' club is also full of opportunities for everyone. You can make friends in this club and gain experience.
-  
+  - question: Does the guidance office have any connection to the peer facilitator club?
+    answer: Indeed, this club serves as the guidance office's helping hand by assisting with the talks that the office hosts.
+  - question: What is Peer Facilitators Club all about?
+    answer: The Peer Facilitators Club focuses on fostering friendship and developing values among students. Its objectives include enhancing self-awareness, improving communication skills, and helping students understand and manage emotions. The club also aims to cultivate leadership qualities and facilitate discussions on contemporary issues such as drug abuse and relationships, ultimately promoting a supportive community within the student body.
 
 ---
