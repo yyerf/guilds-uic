@@ -22,9 +22,14 @@ import {
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsFacebook, BsGithub } from "react-icons/bs";
 import { BsPlus } from "react-icons/bs";
+import { HiOutlineGlobeAlt } from "react-icons/hi";
+import { SiGmail } from "react-icons/si";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectCoverflow } from "swiper";
+import { Autoplay, EffectCoverflow, Pagination, Navigation } from "swiper";
 import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 import styled from "@emotion/styled";
 import { clubAssetURL } from "src/utils";
 import { Fragment } from "react";
@@ -85,40 +90,134 @@ export default function ClubPage({ club }: { club: Club }) {
 
 function Carousel({ club }: { club: Club }) {
 	return (
-		<Box mt="20">
+		<Box mt="20" position="relative">
+			{/* Professional heading for slideshow */}
+			<Container maxWidth="85rem" mb="8">
+				<Heading 
+					fontSize={["2xl", "3xl", "4xl"]} 
+					fontWeight="600" 
+					color="gray.800"
+					textAlign="center"
+					mb="2"
+				>
+					Gallery & Highlights
+				</Heading>
+				<Text 
+					fontSize={["md", "lg"]} 
+					color="gray.600"
+					textAlign="center"
+					maxW="600px"
+					mx="auto"
+				>
+					Explore our memorable moments and exciting activities
+				</Text>
+			</Container>
+
 			<StyledSwiper
-				slidesPerView={1} // Default to 1 slide per view
+				effect="coverflow"
+				slidesPerView={1}
 				spaceBetween={30}
-				loop
+				loop={true}
 				grabCursor={true}
 				centeredSlides={true}
+				speed={800} // Smooth transition speed
 				coverflowEffect={{
-					rotate: 50,
+					rotate: 25, // Reduced for more subtle effect
 					stretch: 0,
-					depth: 100,
-					modifier: 1,
+					depth: 150, // Increased depth for better 3D effect
+					modifier: 1.5, // Enhanced modifier for smoother transitions
 					slideShadows: true,
 				}}
 				autoplay={{
-					delay: 1200,
+					delay: 4000, // Slower auto-advance for better viewing
 					disableOnInteraction: false,
+					pauseOnMouseEnter: true, // Professional touch - pause on hover
 				}}
+				pagination={{
+					clickable: true,
+					dynamicBullets: true, // Professional pagination
+				}}
+				navigation={true} // Add navigation arrows
 				breakpoints={{
 					640: {
-						slidesPerView: 1, // 1 slide per view for screens >= 640px
+						slidesPerView: 1,
+						spaceBetween: 20,
 					},
 					768: {
-						slidesPerView: 2, // 2 slides per view for screens >= 768px
+						slidesPerView: 2,
+						spaceBetween: 30,
+						coverflowEffect: {
+							rotate: 15, // Smaller rotation for multiple slides
+							stretch: 0,
+							depth: 100,
+							modifier: 1,
+							slideShadows: true,
+						},
 					},
 					1024: {
-						slidesPerView: 2, // 2 slides per view for screens >= 1024px
+						slidesPerView: 2.5, // Show partial slide for better UX
+						spaceBetween: 40,
+						coverflowEffect: {
+							rotate: 15,
+							stretch: 0,
+							depth: 100,
+							modifier: 1,
+							slideShadows: true,
+						},
+					},
+					1200: {
+						slidesPerView: 3, // More slides on larger screens
+						spaceBetween: 50,
+						coverflowEffect: {
+							rotate: 10,
+							stretch: 0,
+							depth: 80,
+							modifier: 1,
+							slideShadows: true,
+						},
 					},
 				}}
-				modules={[Autoplay, EffectCoverflow]}
+				modules={[Autoplay, EffectCoverflow, Pagination, Navigation]}
 			>
-				{club.assets.slideshows.map(p => (
-					<StyledSwiperSlide key={`slideshow_${p}`}>
-						<Image src={clubAssetURL(club, 'slideshows', p)} alt={p} objectFit="cover" />
+				{club.assets.slideshows.map((p, index) => (
+					<StyledSwiperSlide key={`slideshow_${p}_${index}`}>
+						<Box position="relative" overflow="hidden">
+							<Box 
+								className="image-container"
+								style={{
+									'--bg-image': `url(${clubAssetURL(club, 'slideshows', p)})`
+								} as any}
+							>
+								<Image 
+									src={clubAssetURL(club, 'slideshows', p)} 
+									alt={`${club.name} gallery image ${index + 1}`} 
+									transition="transform 0.3s ease"
+									_hover={{
+										transform: "scale(1.02)"
+									}}
+								/>
+							</Box>
+							{/* Professional overlay gradient */}
+							<Box
+								position="absolute"
+								bottom="0"
+								left="0"
+								right="0"
+								h="30%"
+								bgGradient="linear(to-t, rgba(0,0,0,0.6), transparent)"
+								opacity="0"
+								transition="opacity 0.3s ease"
+								_hover={{ opacity: 1 }}
+								display="flex"
+								alignItems="flex-end"
+								p="4"
+								zIndex="3"
+							>
+								<Text color="white" fontWeight="500" fontSize="sm">
+									{club.name} Gallery
+								</Text>
+							</Box>
+						</Box>
 					</StyledSwiperSlide>
 				))}
 			</StyledSwiper>
@@ -129,17 +228,171 @@ function Carousel({ club }: { club: Club }) {
 const StyledSwiper = styled(Swiper)`
 	.swiper-wrapper {
 		align-items: center;
+		padding: 20px 0 60px 0; /* Extra padding for pagination */
+	}
+
+	/* Professional pagination styling */
+	.swiper-pagination {
+		bottom: 10px !important;
+		
+		.swiper-pagination-bullet {
+			width: 12px;
+			height: 12px;
+			background: rgba(255, 255, 255, 0.5);
+			border: 2px solid white;
+			opacity: 1;
+			transition: all 0.3s ease;
+			
+			&.swiper-pagination-bullet-active {
+				background: #2670FF;
+				border-color: #2670FF;
+				transform: scale(1.2);
+			}
+		}
+	}
+
+	/* Professional navigation styling */
+	.swiper-button-next,
+	.swiper-button-prev {
+		color: white;
+		background: rgba(255, 255, 255, 0.2);
+		backdrop-filter: blur(10px);
+		border-radius: 50%;
+		width: 50px;
+		height: 50px;
+		margin-top: -25px;
+		transition: all 0.3s ease;
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		
+		&:after {
+			font-size: 20px;
+		}
+		
+		&:hover {
+			background: rgba(255, 255, 255, 0.3);
+			transform: scale(1.1);
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+		}
+		
+		&.swiper-button-disabled {
+			opacity: 0.3;
+			cursor: not-allowed;
+		}
+	}
+
+	.swiper-button-next {
+		right: 20px;
+	}
+	
+	.swiper-button-prev {
+		left: 20px;
+	}
+
+	/* Smooth slide shadow effects */
+	.swiper-slide-shadow-left,
+	.swiper-slide-shadow-right {
+		background: linear-gradient(
+			to right,
+			rgba(0, 0, 0, 0.3),
+			transparent
+		);
+	}
+
+	/* Responsive adjustments */
+	@media (max-width: 768px) {
+		.swiper-button-next,
+		.swiper-button-prev {
+			width: 40px;
+			height: 40px;
+			margin-top: -20px;
+			
+			&:after {
+				font-size: 16px;
+			}
+		}
+		
+		.swiper-button-next {
+			right: 10px;
+		}
+		
+		.swiper-button-prev {
+			left: 10px;
+		}
 	}
 `;
 
 const StyledSwiperSlide = styled(SwiperSlide)`
-	border-radius: 28px;
-	padding: 0 1rem;
-	img {	
-		border: 5px solid black;
-		width: 100%; // Adjust to fit container
-		object-fit: cover;
+	border-radius: 20px;
+	padding: 0 10px;
+	transition: all 0.3s ease;
+	
+	/* Container for better image handling */
+	.image-container {
+		position: relative;
+		width: 100%;
+		height: 300px;
 		border-radius: 15px;
+		overflow: hidden;
+		background: linear-gradient(135deg, 
+			rgba(38, 112, 255, 0.1) 0%, 
+			rgba(147, 51, 234, 0.1) 50%, 
+			rgba(239, 68, 68, 0.1) 100%
+		);
+		box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+		transition: all 0.3s ease;
+		
+		/* Alternative: Use blurred background of the same image */
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-image: var(--bg-image);
+			background-size: cover;
+			background-position: center;
+			filter: blur(20px) brightness(0.3);
+			transform: scale(1.1);
+			z-index: 1;
+		}
+	}
+	
+	img {
+		position: relative;
+		z-index: 2;
+		border: none;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		object-position: center;
+		border-radius: 15px;
+		transition: all 0.3s ease;
+	}
+
+	/* Professional hover effects */
+	&:hover {
+		transform: translateY(-5px);
+		
+		.image-container {
+			box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+		}
+	}
+
+	/* Active slide enhancement */
+	&.swiper-slide-active {
+		.image-container {
+			box-shadow: 0 12px 35px rgba(38, 112, 255, 0.3);
+		}
+	}
+
+	/* Mobile optimizations */
+	@media (max-width: 768px) {
+		padding: 0 5px;
+		
+		.image-container {
+			height: 250px;
+		}
 	}
 `;
 
@@ -680,7 +933,7 @@ function InterestedBox({ club }: { club: Club }) {
 							Connect with us
 						</Heading>
 						
-						<VStack spacing="3" w="full">
+						<HStack spacing="4" w="full" justify="center" flexWrap="wrap">
 							{(club.links?.slice(0, 4) ?? []).map(link => 
 								link.label === 'Contact Number' ? (
 									<Box
@@ -688,14 +941,14 @@ function InterestedBox({ club }: { club: Club }) {
 										bg="rgba(255,255,255,0.7)"
 										backdropFilter="blur(5px)"
 										borderRadius="full"
-										px="6"
-										py="3"
-										w="full"
+										px="4"
+										py="2"
 										textAlign="center"
 										border="1px solid"
 										borderColor="rgba(0,0,0,0.1)"
+										minW="200px"
 									>
-										<Text fontWeight="500" color="gray.700">
+										<Text fontWeight="500" color="gray.700" fontSize="sm">
 											{link.label}: {link.url}
 										</Text>
 									</Box>
@@ -705,38 +958,101 @@ function InterestedBox({ club }: { club: Club }) {
 										as="a"
 										href={link.url}
 										target="_blank"
-										bg={link.label.toLowerCase().includes('facebook') ? "#1877F2" : "rgba(255,255,255,0.7)"}
-										backdropFilter="blur(5px)"
-										color={link.label.toLowerCase().includes('facebook') ? "white" : "gray.700"}
-										border="1px solid"
-										borderColor={link.label.toLowerCase().includes('facebook') ? "#1877F2" : "rgba(0,0,0,0.1)"}
-										borderRadius="full"
-										px="6"
-										py="3"
-										w="full"
-										fontWeight="500"
-										leftIcon={
-											link.label.toLowerCase().includes('facebook') ? 
-											<BsFacebook fontSize="1.2rem" /> : 
-											undefined
+										bg={
+											link.label.toLowerCase().includes('facebook') ? "#1877F2" :
+											link.label.toLowerCase().includes('github') ? "#24292e" :
+											link.label.toLowerCase().includes('gmail') || link.label.toLowerCase().includes('email') ? "#EA4335" :
+											link.label.toLowerCase().includes('website') || link.label.toLowerCase().includes('web') ? "#4285F4" :
+											"rgba(255,255,255,0.7)"
 										}
+										backdropFilter="blur(5px)"
+										color={
+											link.label.toLowerCase().includes('facebook') || 
+											link.label.toLowerCase().includes('github') ||
+											link.label.toLowerCase().includes('gmail') || link.label.toLowerCase().includes('email') ||
+											link.label.toLowerCase().includes('website') || link.label.toLowerCase().includes('web') ? 
+											"white" : "gray.700"
+										}
+										border="1px solid"
+										borderColor={
+											link.label.toLowerCase().includes('facebook') ? "#1877F2" :
+											link.label.toLowerCase().includes('github') ? "#24292e" :
+											link.label.toLowerCase().includes('gmail') || link.label.toLowerCase().includes('email') ? "#EA4335" :
+											link.label.toLowerCase().includes('website') || link.label.toLowerCase().includes('web') ? "#4285F4" :
+											"rgba(0,0,0,0.1)"
+										}
+										borderRadius="full"
+										px={
+											link.label.toLowerCase().includes('facebook') ||
+											link.label.toLowerCase().includes('github') ||
+											link.label.toLowerCase().includes('gmail') || link.label.toLowerCase().includes('email') ||
+											link.label.toLowerCase().includes('website') || link.label.toLowerCase().includes('web') ? 
+											"4" : "6"
+										}
+										py={
+											link.label.toLowerCase().includes('facebook') ||
+											link.label.toLowerCase().includes('github') ||
+											link.label.toLowerCase().includes('gmail') || link.label.toLowerCase().includes('email') ||
+											link.label.toLowerCase().includes('website') || link.label.toLowerCase().includes('web') ? 
+											"4" : "3"
+										}
+										w={
+											link.label.toLowerCase().includes('facebook') ||
+											link.label.toLowerCase().includes('github') ||
+											link.label.toLowerCase().includes('gmail') || link.label.toLowerCase().includes('email') ||
+											link.label.toLowerCase().includes('website') || link.label.toLowerCase().includes('web') ? 
+											"auto" : "full"
+										}
+										h={
+											link.label.toLowerCase().includes('facebook') ||
+											link.label.toLowerCase().includes('github') ||
+											link.label.toLowerCase().includes('gmail') || link.label.toLowerCase().includes('email') ||
+											link.label.toLowerCase().includes('website') || link.label.toLowerCase().includes('web') ? 
+											"50px" : "auto"
+										}
+										minW={
+											link.label.toLowerCase().includes('facebook') ||
+											link.label.toLowerCase().includes('github') ||
+											link.label.toLowerCase().includes('gmail') || link.label.toLowerCase().includes('email') ||
+											link.label.toLowerCase().includes('website') || link.label.toLowerCase().includes('web') ? 
+											"50px" : "auto"
+										}
+										fontWeight="500"
+										display="flex"
+										alignItems="center"
+										justifyContent="center"
 										_hover={{
-											bg: link.label.toLowerCase().includes('facebook') ? "#166FE5" : "rgba(255,255,255,0.9)",
-											transform: "translateY(-1px)",
-											boxShadow: link.label.toLowerCase().includes('facebook') ? 
-												"0 4px 15px rgba(24, 119, 242, 0.4)" : 
+											bg: 
+												link.label.toLowerCase().includes('facebook') ? "#166FE5" :
+												link.label.toLowerCase().includes('github') ? "#1a1e22" :
+												link.label.toLowerCase().includes('gmail') || link.label.toLowerCase().includes('email') ? "#D33B2C" :
+												link.label.toLowerCase().includes('website') || link.label.toLowerCase().includes('web') ? "#3367D6" :
+												"rgba(255,255,255,0.9)",
+											transform: "translateY(-2px) scale(1.05)",
+											boxShadow: 
+												link.label.toLowerCase().includes('facebook') ? "0 6px 20px rgba(24, 119, 242, 0.5)" :
+												link.label.toLowerCase().includes('github') ? "0 6px 20px rgba(36, 41, 46, 0.5)" :
+												link.label.toLowerCase().includes('gmail') || link.label.toLowerCase().includes('email') ? "0 6px 20px rgba(234, 67, 53, 0.5)" :
+												link.label.toLowerCase().includes('website') || link.label.toLowerCase().includes('web') ? "0 6px 20px rgba(66, 133, 244, 0.5)" :
 												"0 4px 10px rgba(0,0,0,0.1)"
 										}}
 										transition="all 0.3s ease"
 									>
-										{link.label.toLowerCase().includes('facebook') ? 
-											`Follow us on Facebook` : 
+										{
+											link.label.toLowerCase().includes('facebook') ? 
+											<BsFacebook fontSize="1.5rem" /> :
+											link.label.toLowerCase().includes('github') ? 
+											<BsGithub fontSize="1.5rem" /> :
+											link.label.toLowerCase().includes('gmail') || link.label.toLowerCase().includes('email') ? 
+											<SiGmail fontSize="1.5rem" /> :
+											link.label.toLowerCase().includes('website') || link.label.toLowerCase().includes('web') ? 
+											<HiOutlineGlobeAlt fontSize="1.5rem" /> :
 											link.label
 										}
 									</Button>
 								)
 							)}
-						</VStack>
+						</HStack>
 					</Box>
 				}
 			</Flex>

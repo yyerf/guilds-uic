@@ -4,18 +4,23 @@ org_type: non-academic
 links:
   - label: Facebook
     url: https://www.facebook.com/bibliophileclub
-  - label: Gmail
-    url: bibliophileclub@uic.edu.ph
 description:
   full: The Bibliophile Club aims to provide like-minded individuals to connect, share their passion for reading, and build friendships based on common literary interests. The Bibliophile Club also engages in community outreach programs where we read to children, donate school supplies, and organize games to play with.
   short: Bibliophile Club is a club of literature enthusiasts who come together to share their love for books.
 tags:
-  - Non-Academic Club
-  - Literature
-  - Reading
+  - Learning
 assets:
-  logo: logo.jpg
-  cover_photo: cover_photo.jpg
+  logo: logo_new.jpg
+  cover_photo: cover_main.jpg
+  cover_card: cover_new.jpg
+  
+  slideshows:
+    - 1.jpg 
+    - 2.jpg
+    - 3.jpg
+    - 4.jpg
+    - 5.jpg
+    - 6.jpg
 theme:
   primary_color: "#ffffff"
   secondary_color: "#ff717e"

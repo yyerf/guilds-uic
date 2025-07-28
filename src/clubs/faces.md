@@ -1,5 +1,5 @@
 ---
-name: FACES - Favorite Artists Choreographically Endeavored Society
+name: Favorite Artists Choreographically Endeavored Society (FACES)
 org_type: non-academic
 description:
   full: |
@@ -17,11 +17,11 @@ links:
   - label: Facebook
     url: https://www.facebook.com/FvrteArtstChrogphcllyEndvrdSciety
 tags:
-  - dance
-  - art
+  - Culture
+  - Dance
 assets:
-  logo: F.A.C.E.S.png
-  cover_photo: cover_photo.png
+  logo: logo.jpg
+  cover_photo: cover_new.jpg
   slideshows:
     - 1.jpg
     - 2.jpg
@@ -34,9 +34,7 @@ assets:
 theme:
   primary_color: "#9A031E"
   secondary_color: "#FB8B24"
-registration:
-  form_url: https://forms.gle/wrPyBeuSMHBJFaS69
-  meeting_url: https://meet.google.com/ovm-iapz-uyo
+
 officers:
   - name: Rey Raphael V. Abellon
     position: Mayor
@@ -81,12 +79,9 @@ faqs:
     answer: |
       For this academic year, all students who would like to join this club are required to fill out the registration form.
 
-      For aspiring members, auditions will be conducted on October 7, 2022 1:00 PM at Father Selga Campus. 
-
-      For existing members, membership renewal will be conducted on the same day, October 7, 2022 1:00 PM at Father Selga Campus.
   - question: What are the requirements in joining this club?
     answer: |
-      Membership shall be open to all officially enrolled students of the University of the Immaculate Conception Academic Year 2022-2023. There are no specific requirements upon joining this club as long as you have the passion for dancing and are committed to learning new dance routines.
+      Membership shall be open to all officially enrolled students of the University of the Immaculate Conception Academic Year 2025-2026. There are no specific requirements upon joining this club as long as you have the passion for dancing and are committed to learning new dance routines.
   - question: Are there any other options for renewing membership besides going to the specified location?
     answer: All students who would like to join this club are required to fill out the registration form and should specify their personal reason. 
 ---

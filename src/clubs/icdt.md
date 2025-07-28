@@ -10,13 +10,10 @@ links:
   - label: Facebook
     url: https://www.facebook.com/profile.php?id=100072234631385&mibextid=ZbWKwL
 tags:
-  - Dance
   - Culture
-  - Academic Club
-  - Music & Arts
 assets:
-  logo: Logo.png
-  cover_photo: CoverPhoto.jpg
+  logo: logo.jpg
+  cover_photo: cover_new.jpg
   slideshows:
     - 1.jpg 
     - 2.jpg

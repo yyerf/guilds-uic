@@ -95,6 +95,7 @@ const ClubAssets = defineNestedType(() => ({
 	fields: {
 		logo: { type: "string" },
 		cover_photo: { type: "string" },
+		cover_card: { type: "string" },
 		slideshows: {
 			type: "list",
 			of: { type: "string" },

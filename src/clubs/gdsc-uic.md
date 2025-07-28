@@ -1,5 +1,5 @@
 ---
-name: Google Developer Student Clubs of UIC
+name: Google Developer Groups On Campus (GDGOC)
 org_type: non-academic
 description:
   full: Google-supported community developer club focusing on providing an environment for students to build solutions for their respective communities through Google technologies.
@@ -12,11 +12,19 @@ links:
   - label: Github
     url: https://github.com/gdsc-uic
 tags:
-  - Technology Related
-  - Non-Academic Club
+  - Technology
+  - Learning
 assets:
-  logo: gdsc_logo.png
-  cover_photo: gdsc_cover.png
+  logo: logo.jpg
+  cover_photo: cover_main.jpg
+  cover_card: cover_new.jpg
+  slideshows:
+    - 1.jpg 
+    - 2.jpg
+    - 3.jpg
+    - 4.jpg
+    - 5.jpg
+    - 6.jpg
 theme:
   primary_color: "#94BAF9"
   secondary_color: "#7DF1B9"
@@ -98,8 +106,8 @@ officers:
     photo_name: Quezada_Core.jpg
   
 faqs:
-  - question: What is GDSC?
-    answer: GDSC / Google Developer Student Clubs are community developer clubs supported by Google. GDSC provides platforms for students when it comes to building solutions through communities.
+  - question: What is GDGOC?
+    answer: GDGOC / Google Developer Groups On Campus are community developer clubs supported by Google. GDGOC provides platforms for students when it comes to building solutions through communities.
   - question: Do I need to have knowledge in programming?
     answer: Not necessary! We welcome everyone with or without knowledge about programming and technology.
   - question: Can I join even if I'm not a CS/IT student?

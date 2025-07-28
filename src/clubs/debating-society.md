@@ -6,19 +6,23 @@ description:
   short: The UIC Debating Society is the official non-academic club of the University of the Immaculate Conception for public speaking and debate-related activities.
   
 links:
-  - label: Gmail
-    url: debsoc@uic.edu.phuniversity-of-the-immaculate-conception
   - label: Facebook
     url: https://www.facebook.com/uicdebatingsociety/
   - label: X (Twitter)
     url: https://x.com/uicdebsoc?lang=en&lang=en
 tags:
-  - Debate
-  - Public Speaking
-  - Non-Academic Club
+  - Debating
 assets:
-  logo: logo.png
-  cover_photo: cover.png
+  logo: logo.jpg
+  cover_photo: cover_new.jpg
+  slideshows:
+    - 11.jpg 
+    - 1.jpg
+    - 2.jpg
+    - 3.jpg
+    - 4.jpg
+    - 5.jpg
+    - 6.jpg
 theme:
   primary_color: "#dd576d"
   secondary_color: "#fffff2"

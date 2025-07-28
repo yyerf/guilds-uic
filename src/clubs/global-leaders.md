@@ -1,18 +1,18 @@
 ---
-name: UIC Global Leaders
+name: Global Leaders Club (GLC)
 org_type: non-academic
 description:
   full: The UIC Global Leaders Club is a student-led organization at the University of the Immaculate Conception, affiliated with the External Relations and Internationalization Office (ERIO). Committed to the university's mission of cultivating globally competitive and resilient graduates, the club fosters leadership development, community engagement, and advocacy for sustainable development goals. Through democratic principles, the club aims to enhance student life, bridge communication between students, faculty, and parents, and prepare students for active roles in society.
   
   short: A student-led group under ERIO that promotes leadership, global readiness, and community involvement. We support student growth through values of unity, integrity, and service, while bridging communication between students, faculty, and parents.
+links:
+  - label: Facebook
+    url: https://www.facebook.com/uicleadsglobal
 tags:
-  - Non-Academic Club
-  - Leadership
-  - Public Relations
-  - Ambassador 
+  - Student Relations 
 assets:
   logo: logo.png
-  cover_photo: cover_photo.jpg
+  cover_photo: cover_new.jpg
   slideshows:
     - 1.jpg 
     - 2.jpg

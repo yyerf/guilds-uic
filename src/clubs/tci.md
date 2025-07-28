@@ -4,19 +4,22 @@ org_type: non-academic
 description:
   full: The Collegiate Immaculate is the official publication of the university. We are composed of capable and progressive writers, photographers, lay-out artists, and cartoonists who serve the university by providing news and current events. We are the purveyors of truth who prevent fake news from prospering. Our organization serves as the eyes and the voice of the university and helps to inform the students with timely news and announcements, as a pursuant of a free press. We function to educate the youth for the transformation of society and recognize the role of responsible journalism in uniting the academic community through writing.
   short: The official student publication of the University of the Immaculate Conception.
-
+links:
+  - label: Facebook
+    url: https://www.facebook.com/tciofuic
 tags:
-  - Student Publication
-  - Non-Academic Club
+  - Student Relations
 assets:
-  logo: logo.png
-  cover_photo: cover.png
+  logo: logo.jpg
+  cover_photo: cover_new.jpg
   slideshows:
     - 1.jpg
     - 2.jpg
     - 3.jpg
     - 4.jpg
-  
+    - 5.jpg
+    - 6.jpg
+    - 7.jpg
 theme:
   primary_color: "#800000"
   secondary_color: "#FE5B7A"

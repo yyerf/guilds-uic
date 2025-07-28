@@ -37,7 +37,7 @@ import ClubCard from "src/components/ClubCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Layout from "src/components/layout";
-import { FormEvent, FormEventHandler, useEffect, useState } from "react";
+import { FormEvent, FormEventHandler, useEffect, useState, useMemo } from "react";
 import { clubAssetURL, fetcher } from "src/utils";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
@@ -101,7 +101,7 @@ export default function Home() {
 			onModalOpen();
 			localStorage.setItem('__guilds_first', '1');
 		}
-	}, []);
+	}, [onModalOpen]);
 
 	// Initialize selected tags from URL params
 	useEffect(() => {
@@ -115,7 +115,7 @@ export default function Home() {
 
 	useEffect(() => {
 		refetch();
-	}, [router.query]);
+	}, [router.query, refetch]);
 
 	const getUrl = (path: string): string => {
 		return router.basePath + path;
@@ -529,7 +529,7 @@ const StyledSlideShow = styled(Swiper)`
 
 // Club Slideshow Component
 function ClubSlideshow() {
-	const slideshowItems = [
+	const slideshowItems = useMemo(() => [
 		{
 			id: 1,
 			title: "Academic Excellence Awards",
@@ -572,7 +572,7 @@ function ClubSlideshow() {
 			description: "Building tomorrow's leaders today",
 			borderColor: "#26076eff" 
 		},
-	];
+	], []);
 
 	const [currentSlide, setCurrentSlide] = useState(0);
 	const [floatingPositions, setFloatingPositions] = useState([]);
@@ -589,7 +589,7 @@ function ClubSlideshow() {
 			}));
 		};
 		setFloatingPositions(generatePositions());
-	}, [slideshowItems.length]);
+	}, [slideshowItems]);
 
 	useEffect(() => {
 		const timer = setInterval(() => {
@@ -608,7 +608,7 @@ function ClubSlideshow() {
 		}, 5000); // Auto-advance every 5 seconds
 
 		return () => clearInterval(timer);
-	}, [slideshowItems.length]);
+	}, [slideshowItems]);
 
 	return (
 		<Box 
@@ -898,63 +898,205 @@ function ClubSlideshow() {
 
 function GuildsModal({ isOpen, onClose }) {
 	return (
-		<Modal isOpen={isOpen} onClose={onClose}>
-			<ModalOverlay />
+		<Modal isOpen={isOpen} onClose={onClose} size="2xl" isCentered>
+			<ModalOverlay 
+				bg="rgba(0, 0, 0, 0.6)" 
+				backdropFilter="blur(8px)"
+			/>
 			<ModalContent
-				border="10px solid black"
-				borderRadius="50px"
-				p="10"
-				maxW={["90%", "60rem"]}
-				bg="#FFECEC"
+				bg="rgba(255, 255, 255, 0.95)"
+				backdropFilter="blur(20px)"
+				borderRadius={["20px", "25px", "30px"]}
+				border="1px solid rgba(255, 255, 255, 0.2)"
+				boxShadow="0 20px 60px rgba(0, 0, 0, 0.15)"
+				mx={["4", "6", "8"]}
+				my={["4", "6", "8"]}
+				maxW={["95%", "90%", "600px", "700px"]}
+				overflow="hidden"
+				position="relative"
 			>
-				<ModalCloseButton
-					_hover={{
-						color: "white",
-						borderRadius: "50%",
-					}}
-					borderRadius="50%"
-					fontSize="15px"
-					m="1rem"
+				{/* Professional gradient background */}
+				<Box
+					position="absolute"
+					top="0"
+					left="0"
+					right="0"
+					bottom="0"
+					bgGradient="linear(135deg, rgba(38, 112, 255, 0.05) 0%, rgba(147, 51, 234, 0.05) 50%, rgba(239, 68, 68, 0.05) 100%)"
+					zIndex="-1"
 				/>
-				<Flex>
-					<VStack alignItems="center">
-						<ModalBody textAlign="center">
+
+				<ModalCloseButton
+					position="absolute"
+					top={["3", "4", "5"]}
+					right={["3", "4", "5"]}
+					bg="rgba(255, 255, 255, 0.9)"
+					backdropFilter="blur(10px)"
+					borderRadius="full"
+					w={["8", "10", "12"]}
+					h={["8", "10", "12"]}
+					fontSize={["sm", "md", "lg"]}
+					color="gray.600"
+					border="1px solid rgba(255, 255, 255, 0.3)"
+					transition="all 0.3s ease"
+					_hover={{
+						bg: "rgba(239, 68, 68, 0.1)",
+						color: "red.500",
+						transform: "scale(1.1)",
+						boxShadow: "0 4px 15px rgba(239, 68, 68, 0.2)"
+					}}
+					zIndex="10"
+				/>
+
+				<ModalBody p={["6", "8", "10"]}>
+					<VStack spacing={["6", "8", "10"]} align="center" textAlign="center">
+						{/* Logo with professional styling */}
+						<Box position="relative">
 							<Image
-								src="/guilds-emblem.png"
-								alt="Guilds"
-								width={["50%", "30%"]}
-								mx="auto"
-								mb="4rem"
+								src="/guilds-logo.png"
+								alt="Guilds Logo"
+								w={["120px", "150px", "180px", "200px"]}
+								h="auto"
+								objectFit="contain"
+								transition="transform 0.3s ease"
+								_hover={{ transform: "scale(1.05)" }}
+								fallbackSrc="/guildLogo.png"
 							/>
+							{/* Subtle glow effect */}
+							<Box
+								position="absolute"
+								top="50%"
+								left="50%"
+								transform="translate(-50%, -50%)"
+								w={["140px", "170px", "200px", "220px"]}
+								h={["140px", "170px", "200px", "220px"]}
+								borderRadius="full"
+								bg="radial-gradient(circle, rgba(38, 112, 255, 0.1) 0%, transparent 70%)"
+								zIndex="-1"
+							/>
+						</Box>
+
+						{/* Professional heading */}
+						<VStack spacing={["2", "3", "4"]}>
+							<Heading
+								fontSize={["2xl", "3xl", "4xl", "5xl"]}
+								fontWeight="700"
+								color="gray.800"
+								letterSpacing="-0.02em"
+								lineHeight="1.1"
+							>
+								Welcome to{" "}
+								<Text as="span" color="#2670FF">
+									Guilds
+								</Text>
+							</Heading>
 							<Text
-								fontFamily="Space Grotesk"
-								fontSize={["10px", "20px", "40px", "60px"]}
-								fontWeight="bold"
+								fontSize={["lg", "xl", "2xl"]}
+								color="gray.600"
+								fontWeight="500"
+								maxW="400px"
 							>
-								Welcome to Guilds!
+								UIC Club Fair 2025
 							</Text>
-							<Text fontSize={["12px", "16px"]}>
-								Guilds is the official club directory website for the UIC Club Fair 2025.
-								You can search and browse all the clubs and organizations the university has to offer.
-								Search your interests and find the best place where your heart beats!
-							</Text>
-						</ModalBody>
-						<ModalFooter justifyContent="center">
-							<Button
-								px={["2rem", "7rem"]}
-								py={["1rem", "2rem"]}
-								boxShadow="5px 5px 0px black"
-								borderRadius="0px"
-								bg="#F2779A"
-								color="white"
-								border="3px solid black"
-								onClick={onClose}
-							>
-								Get Started!
-							</Button>
-						</ModalFooter>
+						</VStack>
+
+						{/* Professional description */}
+						<Text
+							fontSize={["sm", "md", "lg"]}
+							color="gray.700"
+							lineHeight="1.6"
+							maxW={["100%", "90%", "500px"]}
+							textAlign="center"
+						>
+							Discover your passion and find your community! Explore all the amazing clubs and organizations 
+							that the University of the Immaculate Conception has to offer. From academic excellence to 
+							creative pursuits, there's a perfect place for you to grow and thrive.
+						</Text>
+
+						{/* Key features with icons */}
+						<VStack spacing="3" w="full" maxW="400px">
+							<HStack spacing="4" w="full" justify="flex-start">
+								<Box
+									w="8"
+									h="8"
+									bg="rgba(38, 112, 255, 0.1)"
+									borderRadius="full"
+									display="flex"
+									alignItems="center"
+									justifyContent="center"
+								>
+									<Text fontSize="lg" color="#2670FF">🔍</Text>
+								</Box>
+								<Text fontSize={["sm", "md"]} color="gray.700" textAlign="left">
+									Browse and search all available clubs
+								</Text>
+							</HStack>
+							<HStack spacing="4" w="full" justify="flex-start">
+								<Box
+									w="8"
+									h="8"
+									bg="rgba(147, 51, 234, 0.1)"
+									borderRadius="full"
+									display="flex"
+									alignItems="center"
+									justifyContent="center"
+								>
+									<Text fontSize="lg" color="#9333EA">🎯</Text>
+								</Box>
+								<Text fontSize={["sm", "md"]} color="gray.700" textAlign="left">
+									Filter by your interests and passions
+								</Text>
+							</HStack>
+							<HStack spacing="4" w="full" justify="flex-start">
+								<Box
+									w="8"
+									h="8"
+									bg="rgba(16, 185, 129, 0.1)"
+									borderRadius="full"
+									display="flex"
+									alignItems="center"
+									justifyContent="center"
+								>
+									<Text fontSize="lg" color="#10B981">🤝</Text>
+								</Box>
+								<Text fontSize={["sm", "md"]} color="gray.700" textAlign="left">
+									Connect with like-minded students
+								</Text>
+							</HStack>
+						</VStack>
 					</VStack>
-				</Flex>
+				</ModalBody>
+
+				<ModalFooter 
+					justifyContent="center" 
+					pb={["6", "8", "10"]} 
+					pt="0"
+				>
+					<Button
+						bg="#2670FF"
+						color="white"
+						size={["md", "lg", "xl"]}
+						px={["8", "12", "16"]}
+						py={["3", "4", "6"]}
+						fontSize={["md", "lg", "xl"]}
+						fontWeight="600"
+						borderRadius="full"
+						boxShadow="0 8px 25px rgba(38, 112, 255, 0.3)"
+						transition="all 0.3s ease"
+						_hover={{
+							bg: "#1557d8",
+							transform: "translateY(-2px)",
+							boxShadow: "0 12px 35px rgba(38, 112, 255, 0.4)"
+						}}
+						_active={{
+							transform: "translateY(0px)",
+							boxShadow: "0 4px 15px rgba(38, 112, 255, 0.3)"
+						}}
+						onClick={onClose}
+					>
+						Explore Clubs
+					</Button>
+				</ModalFooter>
 			</ModalContent>
 		</Modal>
 	);

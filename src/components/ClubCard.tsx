@@ -80,11 +80,11 @@ export default function ClubCard({ club }: { club: Club }) {
 				display="flex"
 				flexDirection="column"
 			>
-				{/* Cover Photo */}
-				{club.assets.cover_photo && (
+				{/* Cover Photo - Use cover_card if available, otherwise cover_photo */}
+				{(club.assets.cover_card || club.assets.cover_photo) && (
 					<Box
 						h="48"
-						backgroundImage={`url(${clubAssetURL(club, 'cover_photo')})`}
+						backgroundImage={`url(${clubAssetURL(club, club.assets.cover_card ? 'cover_card' : 'cover_photo')})`}
 						backgroundPosition="center"
 						backgroundSize="cover"
 						position="relative"
@@ -117,11 +117,6 @@ export default function ClubCard({ club }: { club: Club }) {
 							<Heading fontSize="xl" color="gray.800" lineHeight="1.2">
 								{club.name}
 							</Heading>
-							{club.description.short && (
-								<Text fontSize="sm" color="gray.600" lineHeight="1.5">
-									{club.description.short}
-								</Text>
-							)}
 						</VStack>
 					</VStack>
 

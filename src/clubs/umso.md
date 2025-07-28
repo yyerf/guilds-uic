@@ -8,15 +8,19 @@ description:
 links:
   - label: Facebook
     url: https://www.facebook.com/UMSO1997/
-  - label: Gmail
-    url: uic-umso@uic.edu.ph
 tags:
-  - Non-Academic Club
-  - Leadership
-  - Religious Organization
+  - Religion
 assets:
   logo: logo.png
   cover_photo: cover.png
+  
+  slideshows:
+    - 1.jpg 
+    - 2.jpg
+    - 3.jpg
+    - 4.jpg
+    - 5.jpg
+    - 6.jpg
 theme:
   primary_color: "#f3f4e7"
   secondary_color: "#1f5014"
