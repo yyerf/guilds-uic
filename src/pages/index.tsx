@@ -1010,7 +1010,7 @@ function GuildsModal({ isOpen, onClose }) {
 						>
 							Discover your passion and find your community! Explore all the amazing clubs and organizations 
 							that the University of the Immaculate Conception has to offer. From academic excellence to 
-							creative pursuits, there's a perfect place for you to grow and thrive.
+							creative pursuits, there&apos;s a perfect place for you to grow and thrive.
 						</Text>
 
 						{/* Key features with icons */}
