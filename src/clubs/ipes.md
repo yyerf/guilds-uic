@@ -10,7 +10,7 @@ links:
     url: https://www.facebook.com/uicipes
 tags:
   - Technology
-  - E-sports
+  - Esports
 assets:
   logo: logo.jpg
   cover_photo: cover_main.jpg
