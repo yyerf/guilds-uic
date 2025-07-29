@@ -100,6 +100,6 @@ We seek to embody a beacon of truth to the University through responsible inquir
 The Collegiate Immaculate is dedicated to emblazon responsible journalism and deliver efficient, truthful, and accurate news and current affairs to the University with confidence and integrity. We seek to prevent the spread of fake news and saturate transparency and veracity through writing. We move forward, together with the student body, to a world of free press.
 
 ## ACTIVITIES FOR THIS YEAR:
-1. TCI Campus Journalism Workshop 2024
+1. TCI Campus Journalism Workshop 2025
 2. Team Building
 
